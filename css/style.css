@@ -13,13 +13,17 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-  background: #fff;
+  background: #FAFAFA;
   transition: transform 0.3s ease-in-out;
 }
 
 #map {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/map.png) no-repeat 100% 50%;
 }
 
 #controls {
@@ -28,13 +32,27 @@ body {
   left: 0;
 }
 
-#sidebar {
+#toolbar {
   position: absolute;
   top: 0;
-  right: -90%;
-  width: 90%;
-  height: 100%;
-  background: #123;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: #516066;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+
+footer p {
+  color: #ccc;
+  font-size: 11px;
 }
 
 #nav {
