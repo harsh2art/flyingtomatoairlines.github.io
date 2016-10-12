@@ -23,7 +23,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/map.png) no-repeat 100% 50%;
+  /*background: url(../img/map.png) no-repeat 100% 50%;*/
 }
 
 #controls {
