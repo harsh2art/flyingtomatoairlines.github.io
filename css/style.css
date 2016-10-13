@@ -41,11 +41,27 @@ body {
   background: #516066;
 }
 
+#navLink {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: rgba(255,255,255,.1);
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  float: left;
+}
+
 h1 {
   font-size: 18px;
   line-height: 60px;
   margin-left: 40px;
   color: #fff;
+}
+
+#toolbar h1 {
+  float: left;
 }
 
 footer {
@@ -66,7 +82,7 @@ footer p {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%;
+  width: 320px;
   height: 100%;
   background: #123;
   transition: all 0.3s ease-in-out;
@@ -85,5 +101,5 @@ footer p {
 }
 
 .navOpen #main {
-  transform: translate3d(90%,0,0);
+  transform: translate3d(320px,0,0);
 }
