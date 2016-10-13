@@ -41,6 +41,13 @@ body {
   background: #516066;
 }
 
+h1 {
+  font-size: 18px;
+  line-height: 60px;
+  margin-left: 40px;
+  color: #fff;
+}
+
 footer {
   position: absolute;
   bottom: 0;
