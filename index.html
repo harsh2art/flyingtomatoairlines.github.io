@@ -18,6 +18,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,11 +43,47 @@
 
         <div id="toolbar">
 
-          <a id="navLink" href="#">Nav</a>
+          <div id="tab-container">
 
-          <h1>CS3382 Web Usability Design and Engineering</h1>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs device-small" role="tablist">
+              <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Destination</a></li>
+              <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">From</a></li>
+              <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Dates</a></li>
+              <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Budget</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+              <div role="tabpanel" class="tab-pane active" id="home">
+                <h2>Destination</h2>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for destination...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /destination -->
+
+              <div role="tabpanel" class="tab-pane" id="profile">
+                <h2>From</h2>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for departure airport...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+                </div><!-- /input-group -->
+              </div>
+              <div role="tabpanel" class="tab-pane" id="messages"><h2>Dates</h2></div>
+              <div role="tabpanel" class="tab-pane" id="settings"><h2>Budget</h2></div>
+            </div>
+
+          </div>
 
         </div>
+
+        <button id="navLink">Nav</button>
 
         <footer>
           <p>This is not a real website. This was designed as part of a school project on web design and usability.</p>
@@ -57,7 +94,7 @@
       <div id="nav"></div>
     </div>
 
-    <script>
+    <!-- <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWxhbmR0bWFuIiwiYSI6IlppRlZSUGMifQ.X0oouInkmaBJ4gRoUpXD3A';
     var map = new mapboxgl.Map({
         container: 'map',
@@ -65,7 +102,7 @@
         center: [114.10, 22.39],
         zoom: 3.9
     });
-    </script>
+    </script> -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -4,6 +4,18 @@ body {
   height: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+span,
+div {
+  font-family: 'Montserrat', sans-serif;
+}
+
 #wrapper {
   width: 100%;
   height: 100%;
@@ -23,7 +35,12 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  /*background: url(../img/map.png) no-repeat 100% 50%;*/
+
+  display: block;
+  text-indent: -9999px;
+  background: #ECECEC url(../img/map.svg);
+  background-size: 260% 260%;
+  background-position: 100% 40%;
 }
 
 #controls {
@@ -34,23 +51,28 @@ body {
 
 #toolbar {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
+  top: 30px;
+  left: 30px;
+  right: 30px;
   background: #516066;
 }
 
+.tab-pane {
+  padding: 30px;
+}
+
 #navLink {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  background: rgba(255,255,255,.1);
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: block;
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  background: #fff;
   text-align: center;
-  color: #fff;
+  color: #000;
   font-size: 20px;
-  float: left;
 }
 
 h1 {
@@ -103,3 +125,33 @@ footer p {
 .navOpen #main {
   transform: translate3d(320px,0,0);
 }
+
+/* --------------- Responsive Fixes --------------- */
+/* small device */
+@media (max-width: 767px) {
+  .device-big {
+    display: none;
+  }
+  .device-small {
+    display: block;
+  }
+}
+/* big device */
+@media only screen and (min-width : 768px) {
+  .device-big .tab-content {
+    overflow: hidden;
+  }
+
+  .device-big, .tab-content > .tab-pane {
+    display: block;
+    width: 25%;
+    float: left;
+  }
+  .device-small {
+    display: none;
+  }
+  .tab-content > .tab-pane {
+    display: block;
+  }
+}
+/* --------------- / Responsive Fixes --------------- */
