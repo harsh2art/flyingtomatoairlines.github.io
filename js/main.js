@@ -1,17 +1,28 @@
-$(function(){
+$(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
 
-  var navOpen = false;
+    trigger.click(function () {
+      hamburger_cross();      
+    });
 
-  $('#navLink').click(function () {
-    if (navOpen) {
-      $("body").removeClass("navOpen");
-      $("body").addClass("navClosed");
-      navOpen = false;
-    } else {
-      $("body").removeClass("navClosed");
-      $("body").addClass("navOpen");
-      navOpen = true;
-    }
-  });
+    function hamburger_cross() {
 
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });  
 });
