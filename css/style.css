@@ -88,14 +88,16 @@ h1 {
 
 footer {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
   padding: 5px;
+  background: #fff;
   text-align: center;
+  border-radius: 4px;
 }
 
-footer p {
+footer span {
   color: #ccc;
   font-size: 11px;
 }
