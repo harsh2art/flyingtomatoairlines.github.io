@@ -13,7 +13,7 @@ p,
 a,
 span,
 div {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 #wrapper {
@@ -38,52 +38,170 @@ div {
 
   display: block;
   text-indent: -9999px;
-  background: #ECECEC url(../img/map.svg);
-  background-size: 260% 260%;
-  background-position: 100% 40%;
-}
-
-#controls {
-  position: absolute;
-  top: 0;
-  left: 0;
+  background: #ECECEC url(../img/map2.svg);
+  background-position: center center;
 }
 
 #toolbar {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  right: 30px;
+  top: 0px;
+  left: 0px;
+  background: #516066;
+  width: 100%;
+}
+
+#tab-container {
+    width: 100%;
+}
+
+.nav-tabs {
+  border: 0;
+}
+
+.nav-tabs>li {
+  margin: 0;
+}
+
+.nav-tabs>li>a {
+  border: 0;
+  border-radius: 0;
+  color: #fff;
+  margin: 0;
+  font-size: 16px;
+  line-height: 0.8;
+  text-transform: uppercase;
+  padding: 15px 15px;
+}
+
+.nav-tabs>li>a>.tab-font-small {
+  font-size: 11px;
+  text-transform: none;
+  color: rgba(255,255,255,.5);
+}
+
+.nav-tabs>li.destination>a {
   background: #516066;
 }
 
+.nav-tabs>li.from>a {
+  background: #49565C;
+}
+
+.nav-tabs>li.dates>a {
+  background: #516066;
+}
+
+.nav-tabs>li.budget>a {
+  background: #626F75;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  color: #fff;
+  border: 0;
+}
+
+.nav-tabs>li.active.destination>a,
+.nav-tabs>li.active.destination>a:focus,
+.nav-tabs>li.active.destination>a:hover {
+  background: #E77E69;
+}
+
+.nav-tabs>li.active.from>a,
+.nav-tabs>li.active.from>a:focus,
+.nav-tabs>li.active.from>a:hover {
+  background: #78AB96;
+}
+
+.nav-tabs>li.active.dates>a,
+.nav-tabs>li.active.dates>a:focus,
+.nav-tabs>li.active.dates>a:hover {
+  background: #9D8A99;
+}
+
+.nav-tabs>li.active.budget>a,
+.nav-tabs>li.active.budget>a:focus,
+.nav-tabs>li.active.budget>a:hover {
+  background: #C3BB9B;
+}
+
 .tab-pane {
-  padding: 30px;
+  width: 100%;
+  padding: 20px;
+  /*overflow: hidden;*/
 }
 
-#navLink {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: block;
-  width: 64px;
-  height: 64px;
-  line-height: 64px;
+.tab-pane h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+#destination {
+  background: #E98B78;
+}
+
+#from {
+  background: #6AA28B;
+}
+
+#dates {
+  background: #937E8F;
+}
+
+#budget {
+  background: #BDB491;
+}
+
+.slider-header {
+  overflow: auto;
+}
+
+.slider-header span.low-value {
+  float: left;
+}
+
+.slider-header span.high-value {
+  float: right;
+}
+
+.slider-container>.slider.slider-horizontal {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slider-handle {
   background: #fff;
-  text-align: center;
-  color: #000;
-  font-size: 20px;
 }
 
-h1 {
-  font-size: 18px;
-  line-height: 60px;
-  margin-left: 40px;
+.tab-pane>.tab-link-container {
+  padding: 10px 0 0 0;
+}
+
+.tab-pane>.tab-link-container>a {
   color: #fff;
 }
 
-#toolbar h1 {
-  float: left;
+/* Display results */
+
+#flight-results {
+  width: 100%;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  height: 100px;
+  background: #ddd;
+}
+
+/* BOOKING */
+
+#book {
+  width: 100%;
+  position: absolute;
+  top: 300px;
+  left: 0;
+  background: #ccc;
+  text-align: center;
 }
 
 footer {
@@ -130,6 +248,22 @@ footer span {
 
 /* --------------- Responsive Fixes --------------- */
 /* small device */
+
+@media (min-width: 350px) {
+  .nav-tabs>li.destination {
+    width: 22%;
+  }
+  .nav-tabs>li.from {
+    width: 22%;
+  }
+  .nav-tabs>li.dates {
+    width: 34%;
+  }
+  .nav-tabs>li.budget {
+    width: 22%;
+  }
+}
+
 @media (max-width: 767px) {
   .device-big {
     display: none;
@@ -157,3 +291,54 @@ footer span {
   }
 }
 /* --------------- / Responsive Fixes --------------- */
+
+/* ELEMENTS */
+
+.none {
+  display: none;
+}
+
+.visible-inline {
+  display: inline-block;
+}
+
+.spinner {
+  text-align: center;
+  padding-left: 10px;
+}
+
+.spinner > div {
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
