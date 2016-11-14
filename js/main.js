@@ -70,6 +70,8 @@ $(function(){
         var from = Object.keys(flights["from"][i])[0];
         // Outbound
         if (fromCity.id == from) {
+          var backToExplore = $("<a href='index.html'></a>").text("Back to explore");
+          $("#info-content").append(backToExplore);
           var outboundContainer = $("<div></div>").attr({
             "id" : "outbound"
           });
@@ -200,9 +202,11 @@ $(function(){
   }
 
   $("#bookButton").on("click", function(){
-    $("body").removeClass("search");
-    $("body").addClass("book");
-    $("body").addClass("booking1");
+    if (outBoundSelected && oneWay || outBoundSelected && returnSelected && !oneWay) {
+      $("body").removeClass("search");
+      $("body").addClass("book");
+      $("body").addClass("booking1");
+    }
   });
 
   $("#detailsButton").on("click", function(){
