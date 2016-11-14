@@ -64,12 +64,13 @@ $(function(){
 
   function updateResults() {
     resultsFound = false;
-    $("#info-content").html("");
     if ((destinationCity.id != null && fromCity.id != null) && (destinationCity.id != fromCity.id)) {
       for (var i = 0; i < flights["from"].length; i++) {
         var from = Object.keys(flights["from"][i])[0];
         // Outbound
         if (fromCity.id == from) {
+          resultsFound = true;
+          $("#info-content").html("");
           var backToExplore = $("<a href='index.html'></a>").text("Back to explore");
           $("#info-content").append(backToExplore);
           var outboundContainer = $("<div></div>").attr({
@@ -94,7 +95,6 @@ $(function(){
               outboundContainer.append(container);
               container.append(title,time,price);
               $("#info-content").append(outboundContainer);
-              resultsFound = true;
               $("#infoButton").removeClass("buttonHidden");
             } else {
               console.log("No flights from this location.")
@@ -212,11 +212,15 @@ $(function(){
   $("#detailsButton").on("click", function(){
     $("body").removeClass("booking1");
     $("body").addClass("booking2");
+    $("#bookingProgress *").removeClass("active");
+    $("#stagePayment").addClass("active");
   });
 
   $("#paymentButton").on("click", function(){
     $("body").removeClass("booking2");
     $("body").addClass("booking3");
+    $("#bookingProgress *").removeClass("active");
+    $("#stageConfirm").addClass("active");
   });
 
   // dates
@@ -256,6 +260,7 @@ $(function(){
       $(".dateEnd").prop('disabled', true);
     }
     dateTab();
+    updateResults();
   });
 
   // Budget

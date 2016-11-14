@@ -48,8 +48,42 @@ header {
 
 #topBar {
   width: 100%;
-  height: 40px;
   background: #2F6581;
+  overflow: auto;
+  position: relative;
+  height: 50px;
+}
+
+#logo {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+#logo img {
+  width: auto;
+  height: 40px;
+}
+
+#topBar .inner {
+  padding: 0 20px;
+}
+
+#topBar ul {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style-type: none;
+}
+
+#topBar ul li {
+  padding: 0 20px 0 0;
+  float: right;
+}
+
+#topBar ul li a {
+  color: rgba(255,255,255,.7);
+  line-height: 50px;
 }
 
 /* -------------
@@ -295,16 +329,6 @@ TABS
   background: rgba(0,0,0,.3);
 }
 
-#bookingHeader {
-  background: #ccc;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-#bookingHeader .inner {
-  padding: 40px 0;
-}
-
 /* -------------
 
 MAIN CONTENT
@@ -407,6 +431,36 @@ MAIN CONTENT
   background: #CB4F43;
 }
 
+/* -------------
+
+BOOKING
+
+-------------- */
+
+.book #tabs {
+  background: #4A7993;
+}
+
+#bookingHeader {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #4A7993;
+  color: #fff;
+}
+
+#bookingProgress {
+  padding: 40px 0 0 0;
+}
+
+#bookingProgress .active {
+  color: #4A7993;
+  text-decoration: underline;
+}
+
+#bookingHeader .inner {
+  padding: 40px 0;
+}
+
 #bookingContent {
   width: 100%;
   max-width: 960px;
@@ -414,7 +468,7 @@ MAIN CONTENT
 }
 
 #bookingContent .inner {
-  padding: 0;
+  padding: 20px 0 40px 0;
 }
 
 #bookingContent form {
@@ -431,8 +485,40 @@ MAIN CONTENT
 
 footer {
   width: 100%;
-  height: 140px;
-  background: #333;
+  padding: 60px 0 40px 0;
+  background: #2F6581;
+  background: #1d1d1d;
+  color: #ccc;
+}
+
+footer a {
+  color: rgba(255,255,255,.7);
+  color: #749CB5;
+}
+
+footer a:hover {
+  color: #749CB5;
+}
+
+footer li:first-child {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+footer .social a {
+  display: inline-block;
+  margin-right: 5px;
+  width: 44px;
+  line-height: 44px;
+  font-size: 20px;
+  background: #CB4F43;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+
+footer .copy {
+  padding-top: 20px;
 }
 
 /* -------------
@@ -503,7 +589,12 @@ JS-ADDED ELEMENTS
 }
 
 .selected {
-  background: green;
+  background: #749CB6;
+}
+
+.selected h2,
+.selected p {
+  color: #fff;
 }
 
 /* -------------
@@ -518,7 +609,11 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 9998;
+  }
+
+  #logo {
+    display: none;
   }
 
   .device-big {
@@ -565,18 +660,15 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
   }
 
   #map-area {
-    height: 100%;
+
   }
 
   #map {
-    height: 100%;
+    height: 400px;
   }
 
   #info-layer {
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   #info-content {
@@ -593,6 +685,10 @@ RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
 -------------- */
 
 @media only screen and (min-width : 768px) {
+
+  #topBar .inner {
+    padding: 0 50px;
+  }
 
   .tab-content {
     overflow: hidden;
