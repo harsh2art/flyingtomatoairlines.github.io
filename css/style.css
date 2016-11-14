@@ -208,8 +208,8 @@ TABS
   padding-left: 10px;
 }
 
-#budget .inner {
-  padding-left: 20px;
+.tab-pane label {
+  height: 22px;
 }
 
 #budget .slider-container {
@@ -269,7 +269,6 @@ MAIN CONTENT
 
 #infoButton {
   width: 100%;
-  height: 100px;
   background: rgba(255,255,255,.8);
   position: absolute;
   bottom: 0;
@@ -306,6 +305,33 @@ JS-ADDED ELEMENTS
   border: 1px solid #e0e0e0;
   background: #fafafa;
   display: block;
+}
+
+.flightItem:hover {
+  text-decoration: none;
+}
+
+.flightItem.explore {
+  padding: 100px 20px 5px 20px;
+}
+
+.flightItem.explore.beaches {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.45)),
+    url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRiCEWznPhuC9Yyd7ukSYpaD3zFlVWH8waVue1UfvDq378mB_lD) left top / cover no-repeat;
+}
+
+.flightItem.explore.cities {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.45)),
+    url(http://assets.fodors.com/destinations/54468/boat-harbor-hong-kong-china-1_main.jpg) left top / cover no-repeat;
+}
+
+.flightItem.explore h2 {
+  color: #fff;
+  font-size: 30px;
 }
 
 .bold {
@@ -415,7 +441,7 @@ RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
   .tab-content {
     overflow: hidden;
     width: 100%;
-    padding: 40px;
+    padding: 20px 40px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -431,6 +457,18 @@ RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
   }
   .tab-content > .tab-pane {
     display: block;
+  }
+
+  .tab-content .form-control {
+    height: 56px;
+  }
+
+  #budget .inner {
+    padding-left: 20px;
+  }
+
+  #budget .slider-container {
+    padding-top: 16px;
   }
 
   #container {

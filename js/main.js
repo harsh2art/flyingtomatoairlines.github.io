@@ -173,15 +173,19 @@ $(function(){
     if (outBoundSelected && !returnSelected && !oneWay) {
       $("#bookButton p").text("Choose return flight");
       $("#bookButton").removeClass("buttonActive");
+      $(".bookingTotal").text(parseInt(outBoundPrice));
     } else if (!outBoundSelected && returnSelected && !oneWay) {
       $("#bookButton p").text("Choose outbound flight");
       $("#bookButton").removeClass("buttonActive");
+      $(".bookingTotal").text(parseInt(returnPrice));
     } else if (outBoundSelected && oneWay) {
       $("#bookButton p").text("Book flight");
       $("#bookButton").addClass("buttonActive");
+      $(".bookingTotal").text(parseInt(outBoundPrice));
     } else if (outBoundSelected && returnSelected && !oneWay) {
       $("#bookButton p").text("Book flights");
       $("#bookButton").addClass("buttonActive");
+      $(".bookingTotal").text(parseInt(outBoundPrice) + parseInt(returnPrice));
     }
   }
 
