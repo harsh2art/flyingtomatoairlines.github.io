@@ -462,14 +462,28 @@ JS-ADDED ELEMENTS
   background: linear-gradient(
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0.45)),
-    url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRiCEWznPhuC9Yyd7ukSYpaD3zFlVWH8waVue1UfvDq378mB_lD) left top / cover no-repeat;
+    url(../img/beaches.jpg) left top / cover no-repeat;
 }
 
 .flightItem.explore.cities {
   background: linear-gradient(
     rgba(0, 0, 0, 0.1),
     rgba(0, 0, 0, 0.45)),
-    url(http://assets.fodors.com/destinations/54468/boat-harbor-hong-kong-china-1_main.jpg) left top / cover no-repeat;
+    url(../img/cities.jpg) left top / cover no-repeat;
+}
+
+.flightItem.explore.outdoors {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.45)),
+    url(../img/outdoors.jpg) left top / cover no-repeat;
+}
+
+.flightItem.explore.adventure {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.45)),
+    url(../img/adventure.jpg) left top / cover no-repeat;
 }
 
 .flightItem.explore h2 {
