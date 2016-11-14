@@ -361,27 +361,22 @@ MAIN CONTENT
 
 #map.beaches {
   background-image: url(../img/map-beaches.png);
-  background: red;
 }
 
 #map.cities {
   background-image: url(../img/map-cities.png);
-  background: green;
 }
 
 #map.outdoors {
   background-image: url(../img/map-outdoors.png);
-  background: yellow;
 }
 
 #map.adventure {
   background-image: url(../img/map-adventure.png);
-  background: brown;
 }
 
 #map.hkgsin {
   background-image: url(../img/map-hkgsin.png);
-  background: purple;
 }
 
 #map.hkgnrt {
@@ -390,7 +385,6 @@ MAIN CONTENT
 
 #map.under1000 {
   background-image: url(../img/map-under1000.png);
-  background: pink;
 }
 
 #info-layer {
