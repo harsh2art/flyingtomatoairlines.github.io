@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  background: #e1e1e1;
+  background: #fafafa;
 }
 
 h1,
@@ -43,7 +43,8 @@ HEADER
 header {
   width: 100%;
   background: #e1e1e1;
-  border-bottom: 1px solid #ccc;
+  background: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 #topBar {
@@ -284,6 +285,7 @@ TABS
 
 .slider-handle {
   background: #fff;
+  border: 1px solid #e0e0e0;
 }
 
 .tab-pane>.tab-link-container {
@@ -457,6 +459,11 @@ BOOKING
   text-decoration: underline;
 }
 
+#bookingProgress i {
+  display: inline-block;
+  margin: 0 5px;
+}
+
 #bookingHeader .inner {
   padding: 40px 0;
 }
@@ -486,23 +493,17 @@ BOOKING
 footer {
   width: 100%;
   padding: 60px 0 40px 0;
-  background: #2F6581;
-  background: #1d1d1d;
-  color: #ccc;
+  background: #4C4C4C;
+  background: #D0CCC2;
+  color: #333;
 }
 
 footer a {
-  color: rgba(255,255,255,.7);
-  color: #749CB5;
+  color: #2F6581;
 }
 
 footer a:hover {
   color: #749CB5;
-}
-
-footer li:first-child {
-  margin-bottom: 10px;
-  font-weight: 700;
 }
 
 footer .social a {
@@ -744,6 +745,7 @@ RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
     height: 100%;
     overflow: scroll;
     background: #fafafa;
+    box-shadow: -3px 0 10px rgba(0,0,0,.1);
   }
 
   #info-content {

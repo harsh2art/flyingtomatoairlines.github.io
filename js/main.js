@@ -71,7 +71,7 @@ $(function(){
         if (fromCity.id == from) {
           resultsFound = true;
           $("#info-content").html("");
-          var backToExplore = $("<a href='index.html'></a>").text("Back to explore");
+          var backToExplore = $("<a href='index.html' class='btn btn-default' role='button'><i class='fa fa-chevron-left' aria-hidden='true'></i> Back to explore</a>");
           $("#info-content").append(backToExplore);
           var outboundContainer = $("<div></div>").attr({
             "id" : "outbound"
