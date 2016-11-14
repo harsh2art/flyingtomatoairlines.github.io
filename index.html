@@ -27,7 +27,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="search">
 
     <header>
 
@@ -106,7 +106,7 @@
 
         <div id="map-area">
 
-          <div id="map"></div>
+          <div id="map" class="explore"></div>
 
           <div id="info-layer">
 
@@ -126,21 +126,39 @@
 
               </a>
 
+              <a href="#" class="flightItem explore cities">
+
+                <h2>Breathtaking outdoors</h2>
+
+              </a>
+
+              <a href="#" class="flightItem explore cities">
+
+                <h2>Adventure</h2>
+
+              </a>
+
             </div>
 
-            <div id="infoButton">
+            <div id="infoButton" class="buttonHidden">
 
               <div class="inner">
 
                 <p>Total: $<span class="bookingTotal"></span></p>
 
-                <button>Book flights</button>
+                <button id="bookButton" class="inactiveButton">Choose flights</button>
 
               </div>
 
             </div>
 
           </div>
+
+        </div>
+
+        <div id="bookingContent">
+
+          <h1>Booking</h1>
 
         </div>
 

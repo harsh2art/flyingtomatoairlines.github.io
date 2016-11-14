@@ -1,5 +1,5 @@
 var destinationCity;
-var fromCity;
+var fromCity = {id: "HKG", name: "Hong Kong HKG"};
 var dates = {
   startDate: {
     day: "",
@@ -93,6 +93,7 @@ $(function(){
               container.append(title,time,price);
               $("#info-content").append(outboundContainer);
               resultsFound = true;
+              $("#infoButton").removeClass("buttonHidden");
             } else {
               console.log("No flights from this location.")
             }
@@ -171,30 +172,25 @@ $(function(){
   function updateButton() {
     console.log("update button");
     if (outBoundSelected && !returnSelected && !oneWay) {
-      $("#bookButton p").text("Choose return flight");
-      $("#bookButton").removeClass("buttonActive");
+      $("#bookButton").text("Choose return flight");
       $(".bookingTotal").text(parseInt(outBoundPrice));
     } else if (!outBoundSelected && returnSelected && !oneWay) {
-      $("#bookButton p").text("Choose outbound flight");
-      $("#bookButton").removeClass("buttonActive");
+      $("#bookButton").text("Choose outbound flight");
       $(".bookingTotal").text(parseInt(returnPrice));
     } else if (outBoundSelected && oneWay) {
-      $("#bookButton p").text("Book flight");
-      $("#bookButton").addClass("buttonActive");
+      $("#bookButton").text("Book flight");
+      $("#bookButton").addClass("activeButton");
       $(".bookingTotal").text(parseInt(outBoundPrice));
     } else if (outBoundSelected && returnSelected && !oneWay) {
-      $("#bookButton p").text("Book flights");
-      $("#bookButton").addClass("buttonActive");
+      $("#bookButton").text("Book flights");
+      $("#bookButton").addClass("activeButton");
       $(".bookingTotal").text(parseInt(outBoundPrice) + parseInt(returnPrice));
     }
   }
 
   $("#bookButton").on("click", function(){
-    if ((outBoundSelected && returnSelected && !oneWay) || (outBoundSelected && oneWay)) {
-      $("#book").removeClass("bookHidden");
-      $(this).addClass("resultsHidden");
-      $("#flight-results").addClass("resultsHidden");
-    }
+    $("body").removeClass("search");
+    $("body").addClass("book");
   });
 
   // dates
@@ -239,7 +235,11 @@ $(function(){
   // Budget
 
   var changeValue = function() {
-    $(".budgetvalue").text(value.getValue());
+    var budget = value.getValue();
+    if (budget == 2000) {
+      budget = "2000+";
+    }
+    $(".budgetvalue").text(budget);
   };
 
   var value = $('#budget-slider').slider().on('slide',changeValue).data('slider');
