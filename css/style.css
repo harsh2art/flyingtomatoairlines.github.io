@@ -5,7 +5,21 @@ body {
 }
 
 body {
-  background: #fafafa;
+  background: #e1e1e1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+span,
+div,
+button,
+label {
+  font-family: 'Work Sans', sans-serif;
 }
 
 h1 {
@@ -16,6 +30,10 @@ h2 {
   font-size: 20px;
 }
 
+label {
+  font-weight: 400;
+}
+
 /* -------------
 
 HEADER
@@ -24,7 +42,8 @@ HEADER
 
 header {
   width: 100%;
-  background: #fafafa;
+  background: #e1e1e1;
+  border-bottom: 1px solid #ccc;
 }
 
 #topBar {
@@ -172,6 +191,44 @@ TABS
   padding: 10px 0 0 0;
 }
 
+.tab-pane>.input-group {
+  width: 100%;
+}
+
+.tab-pane>.input-group>.form-control {
+  width: 100%;
+}
+
+.tab-pane>.input-group>.from {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.tab-pane>label {
+  padding-left: 10px;
+}
+
+#budget .inner {
+  padding-left: 20px;
+}
+
+#budget .slider-container {
+  padding-top: 5px;
+}
+
+#budget .slider.slider-horizontal .slider-track {
+  height: 6px;
+  margin-top: -3px;
+}
+
+#budget .slider-container .slider-selection {
+  background: #CB4F43;
+}
+
+#budget .slider-container .slider-track-high {
+  background: rgba(0,0,0,.3);
+}
+
 /* -------------
 
 MAIN CONTENT
@@ -194,6 +251,7 @@ MAIN CONTENT
 #map {
   /*text-indent: -9999px;*/
   background: #ECECEC url(../img/mapHKGNRT.svg);
+  background: #ECECEC url(../img/map.png);
   background-size: cover;
   background-position: center center;
 }
@@ -201,11 +259,33 @@ MAIN CONTENT
 #info-layer {
   height: 100%;
   overflow: scroll;
+  position: relative;
 }
 
 #info-content {
-  background: #555;
+  background: #fafafa;
   height: 400px;
+}
+
+#infoButton {
+  width: 100%;
+  height: 100px;
+  background: rgba(255,255,255,.8);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#infoButton .inner {
+  padding: 20px;
+}
+
+#infoButton button {
+  width: 100%;
+  line-height: 46px;
+  background: #CB4F43;
+  border: 0;
+  color: #fff;
 }
 
 footer {
@@ -225,6 +305,7 @@ JS-ADDED ELEMENTS
   padding: 5px 20px;
   border: 1px solid #e0e0e0;
   background: #fafafa;
+  display: block;
 }
 
 .bold {
@@ -237,6 +318,10 @@ JS-ADDED ELEMENTS
 
 .price {
   font-size: 16px;
+}
+
+.selected {
+  background: green;
 }
 
 /* -------------
@@ -275,6 +360,18 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
 
   #budget {
     background: #BDB491;
+  }
+
+  .tab-pane>.input-group>.form-control {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-radius: 4px;
+  }
+
+  .tab-pane label {
+    display: none;
   }
 
   #container {
@@ -317,14 +414,17 @@ RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
 
   .tab-content {
     overflow: hidden;
-    width: auto;
+    width: 100%;
     padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .tab-content > .tab-pane {
     display: block;
     width: 25%;
     float: left;
+    padding: 20px 0;
   }
   .device-small {
     display: none;

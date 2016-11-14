@@ -64,8 +64,7 @@ $(function(){
 
   function updateResults() {
     resultsFound = false;
-    $("#outbound").html("");
-    $("#return").html("");
+    $("#info-content").html("");
     if ((destinationCity.id != null && fromCity.id != null) && (destinationCity.id != fromCity.id)) {
       for (var i = 0; i < flights["from"].length; i++) {
         var from = Object.keys(flights["from"][i])[0];
@@ -74,12 +73,13 @@ $(function(){
           var outboundContainer = $("<div></div>").attr({
             "id" : "outbound"
           });
-          var resultsOutboundHeader = $("<h1></h1>").text("Outbound flight: " + fromCity.name + " to " + destinationCity.name);
+          var resultsOutboundHeader = $("<h1></h1>").text("Outbound flight");
           outboundContainer.append(resultsOutboundHeader);
           for (var j = 0; j < flights["from"][i][fromCity.id].length; j++) {
             if (destinationCity.id == flights["from"][i][fromCity.id][j].id) {
               var flight = flights["from"][i][fromCity.id][j];
-              var container = $("<div></div>").attr({
+              var container = $("<a></a>").attr({
+                "href" : "#",
                 "class" : "flightItem",
                 "data-from" : fromCity.id,
                 "data-destination" : destinationCity.id,
@@ -103,12 +103,13 @@ $(function(){
           var returnContainer = $("<div></div>").attr({
             "id" : "return"
           });
-          var resultsOutboundHeader = $("<h1></h1>").text("Return flight: " + destinationCity.name + " to " + fromCity.name);
+          var resultsOutboundHeader = $("<h1></h1>").text("Return flight");
           returnContainer.append(resultsOutboundHeader);
           for (var j = 0; j < flights["from"][i][destinationCity.id].length; j++) {
             if (fromCity.id == flights["from"][i][destinationCity.id][j].id) {
               var flight = flights["from"][i][destinationCity.id][j];
-              var container = $("<div></div>").attr({
+              var container = $("<a></a>").attr({
+                "href" : "#",
                 "class" : "flightItem",
                 "data-from" : fromCity.id,
                 "data-destination" : destinationCity.id,
@@ -142,8 +143,8 @@ $(function(){
 
   // Select flights
 
-  $("#outbound").on("click", "div.flight-result", function(){
-    $("#outbound .flight-result").removeClass("selected");
+  $("#info-content").on("click", "#outbound a.flightItem", function(){
+    $("#info-content #outbound .flightItem").removeClass("selected");
     $(this).addClass("selected");
     outBoundSelected = true;
     outBoundDepart = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].depart;
@@ -156,8 +157,8 @@ $(function(){
   // console.log(flights["from"][0][$(".selected").attr("data-from")][0]);
   console.log($(".selected").attr("data-from"));
 
-  $("#return").on("click", "div.flight-result", function(){
-    $("#return .flight-result").removeClass("selected");
+  $("#info-content").on("click", "#return a.flightItem", function(){
+    $("#info-content #return .flightItem").removeClass("selected");
     $(this).addClass("selected");
     returnSelected = true;
     returnDepart = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].depart;
@@ -234,7 +235,7 @@ $(function(){
   // Budget
 
   var changeValue = function() {
-    $("#budgetvalue").text(value.getValue());
+    $(".budgetvalue").text(value.getValue());
   };
 
   var value = $('#budget-slider').slider().on('slide',changeValue).data('slider');
