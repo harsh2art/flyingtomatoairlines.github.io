@@ -26,7 +26,7 @@ $(function(){
 
   var $inputDestination = $('#typeahead-destination');
   $inputDestination.typeahead({
-    source: [{id: "HKG", name: "Hong Kong"}, {id: "KIX", name: "Osaka"}, {id: "HND", name: "Tokyo"}, {id: "PVG", name: "Shanghai"}, {id: "SIN", name: "Singapore"}]
+    source: [{id: "HKG", name: "Hong Kong HKG"}, {id: "NRT", name: "Tokyo NRT"}, {id: "SIN", name: "Singapore SIN"}]
   });
 
   $inputDestination.change(function() {
@@ -39,7 +39,7 @@ $(function(){
 
   var $inputFrom = $('#typeahead-from');
   $inputFrom.typeahead({
-    source: [{id: "HKG", name: "Hong Kong"}, {id: "KIX", name: "Osaka"}, {id: "HND", name: "Tokyo"}, {id: "PVG", name: "Shanghai"}, {id: "SIN", name: "Singapore"}]
+    source: [{id: "HKG", name: "Hong Kong HKG"}, {id: "NRT", name: "Tokyo NRT"}, {id: "SIN", name: "Singapore SIN"}]
   });
 
   $inputFrom.change(function() {
@@ -71,21 +71,27 @@ $(function(){
         var from = Object.keys(flights["from"][i])[0];
         // Outbound
         if (fromCity.id == from) {
+          var outboundContainer = $("<div></div>").attr({
+            "id" : "outbound"
+          });
           var resultsOutboundHeader = $("<h1></h1>").text("Outbound flight: " + fromCity.name + " to " + destinationCity.name);
-          $("#outbound").append(resultsOutboundHeader);
+          outboundContainer.append(resultsOutboundHeader);
           for (var j = 0; j < flights["from"][i][fromCity.id].length; j++) {
             if (destinationCity.id == flights["from"][i][fromCity.id][j].id) {
               var flight = flights["from"][i][fromCity.id][j];
-              var container = $("<div class='flight-result'></div>").attr({
+              var container = $("<div></div>").attr({
+                "class" : "flightItem",
                 "data-from" : fromCity.id,
                 "data-destination" : destinationCity.id,
                 "data-index" : j
               });
               var title = $("<h2></h2>").text(fromCity.id + " - " + flight.id);
+              // var titleDepart = $("<span></span>").attr({"class":"bold"}).text(flight.depart);
               var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
               var price = $("<p></p>").text("$" + flight.price)
-              $("#outbound").append(container);
+              outboundContainer.append(container);
               container.append(title,time,price);
+              $("#info-content").append(outboundContainer);
               resultsFound = true;
             } else {
               console.log("No flights from this location.")
@@ -94,12 +100,16 @@ $(function(){
         }
         // Return
         if (destinationCity.id == from && !oneWay) {
+          var returnContainer = $("<div></div>").attr({
+            "id" : "return"
+          });
           var resultsOutboundHeader = $("<h1></h1>").text("Return flight: " + destinationCity.name + " to " + fromCity.name);
-          $("#return").append(resultsOutboundHeader);
+          returnContainer.append(resultsOutboundHeader);
           for (var j = 0; j < flights["from"][i][destinationCity.id].length; j++) {
             if (fromCity.id == flights["from"][i][destinationCity.id][j].id) {
               var flight = flights["from"][i][destinationCity.id][j];
-              var container = $("<div class='flight-result'></div>").attr({
+              var container = $("<div></div>").attr({
+                "class" : "flightItem",
                 "data-from" : fromCity.id,
                 "data-destination" : destinationCity.id,
                 "data-index" : j
@@ -107,8 +117,9 @@ $(function(){
               var title = $("<h2></h2>").text(destinationCity.id + " - " + flight.id);
               var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
               var price = $("<p></p>").text("$" + flight.price)
-              $("#return").append(container);
+              returnContainer.append(container);
               container.append(title,time,price);
+              $("#info-content").append(returnContainer);
               resultsFound = true;
             } else {
               console.log("No flights from this location.")
@@ -241,65 +252,4 @@ function dateTab() {
       $("#datesTab").html(dates.startDate.day + "." + dates.startDate.month + "-" + dates.endDate.day + "." + dates.endDate.month);
     }
   }
-}
-
-// Google Maps
-
-var geocoder;
-
-//Get the latitude and the longitude;
-function successFunction(position) {
-    $("#spinner").removeClass("visible-inline");
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    codeLatLng(lat, lng)
-}
-
-function errorFunction(){
-    alert("Geocoder failed");
-}
-
-function getLocation() {
-  $("#spinner").addClass("visible-inline");
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-  }
-
-  geocoder = new google.maps.Geocoder();
-}
-
-function codeLatLng(lat, lng) {
-
-  var latlng = new google.maps.LatLng(lat, lng);
-  geocoder.geocode({'latLng': latlng}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-    // console.log(results)
-      if (results[1]) {
-       //formatted address
-      //  alert(results[0].formatted_address)
-      //find country name
-           for (var i=0; i<results[0].address_components.length; i++) {
-          for (var b=0;b<results[0].address_components[i].types.length;b++) {
-
-          //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-              if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-                  //this is the object you are looking for
-                  city= results[0].address_components[i];
-                  break;
-              }
-          }
-      }
-      //city data
-      // alert(city.short_name + " " + city.long_name)
-      console.log(city.short_name);
-      $("#typeahead-from").val(city.short_name);
-
-      } else {
-        alert("No results found");
-      }
-    } else {
-      alert("Geocoder failed due to: " + status);
-    }
-  });
 }

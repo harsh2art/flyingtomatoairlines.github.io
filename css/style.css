@@ -4,56 +4,47 @@ body {
   height: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-a,
-span,
-div {
-  font-family: 'Work Sans', sans-serif;
+body {
+  background: #fafafa;
 }
 
-#wrapper {
-  width: 100%;
-  height: 100%;
+h1 {
+  font-size: 22px;
 }
 
-#main {
-  padding: ;
+h2 {
+  font-size: 20px;
 }
 
-#map {
-  width: 100%;
-  height: 90%;
+/* -------------
 
-  display: block;
-  text-indent: -9999px;
-  background: #ECECEC url(../img/map2.svg);
-  background-position: center center;
-}
+HEADER
+
+-------------- */
 
 header {
   width: 100%;
-  height: 60px;
-  background: red;
-  position: fixed;
-  top: 0;
-  left: 0;
+  background: #fafafa;
 }
 
-#toolbar {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background: #516066;
+#topBar {
+  width: 100%;
+  height: 40px;
+  background: #123;
+}
+
+/* -------------
+
+TABS
+
+-------------- */
+
+#tabs-container {
   width: 100%;
 }
 
-#tab-container {
-    width: 100%;
+#tabs {
+  width: 100%;
 }
 
 .nav-tabs {
@@ -72,7 +63,7 @@ header {
   font-size: 16px;
   line-height: 0.8;
   text-transform: uppercase;
-  padding: 15px 15px;
+  padding: 17px 15px;
 }
 
 .nav-tabs>li>a>.tab-font-small {
@@ -80,6 +71,19 @@ header {
   text-transform: none;
   color: rgba(255,255,255,.5);
 }
+
+.nav-tabs>li.destination {
+    width: 23.2%;
+  }
+  .nav-tabs>li.from {
+    width: 23.2%;
+  }
+  .nav-tabs>li.dates {
+    width: 30.4%;
+  }
+  .nav-tabs>li.budget {
+    width: 23.2%;
+  }
 
 .nav-tabs>li.destination>a {
   background: #516066;
@@ -100,7 +104,7 @@ header {
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-  color: #fff;
+  color: #333;
   border: 0;
 }
 
@@ -128,6 +132,10 @@ header {
   background: #C3BB9B;
 }
 
+.tab-content {
+  width: 100%;
+}
+
 .tab-pane {
   width: 100%;
   padding: 20px;
@@ -137,22 +145,6 @@ header {
 .tab-pane h2 {
   margin: 0;
   font-size: 22px;
-}
-
-#destination {
-  background: #E98B78;
-}
-
-#from {
-  background: #6AA28B;
-}
-
-#dates {
-  background: #937E8F;
-}
-
-#budget {
-  background: #BDB491;
 }
 
 .slider-header {
@@ -180,152 +172,156 @@ header {
   padding: 10px 0 0 0;
 }
 
-.tab-pane>.tab-link-container>a {
-  color: #fff;
+/* -------------
+
+MAIN CONTENT
+
+-------------- */
+
+#main {
+
 }
 
-/* Display results */
+#container {
 
-#bookButton {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  height: 56px;
+}
+
+#map-area {
   width: 100%;
-  text-align: center;
+  position: relative;
 }
 
-.resultsHidden {
-  display: none;
+#map {
+  /*text-indent: -9999px;*/
+  background: #ECECEC url(../img/mapHKGNRT.svg);
+  background-size: cover;
+  background-position: center center;
 }
 
-.buttonInactive {
-  background: #ccc;
+#info-layer {
+  height: 100%;
+  overflow: scroll;
 }
 
-.buttonActive {
-  background: red;
-}
-
-#bookButton p {
-  line-height: 56px;
-  color: #fff;
-  font-size: 16px;
-}
-
-#flight-results {
-  width: 100%;
-  position: absolute;
-  top: 180px;
-  left: 0;
-  background: #ddd;
-  padding-bottom: 56px;
-}
-
-.flight-result {
-  background: #fff;
-  padding: 5px 15px;
-  margin-bottom: 10px;
-}
-
-.selected {
-  background: green;
-}
-
-.flight-result h1 {
-  font-size: 20px;
-}
-
-/* BOOKING */
-
-#book {
-  width: 100%;
-  position: absolute;
-  top: 300px;
-  left: 0;
-  background: #ccc;
-  text-align: center;
-}
-
-.bookHidden {
-  display: none;
+#info-content {
+  background: #555;
+  height: 400px;
 }
 
 footer {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
-  padding: 5px;
-  background: #fff;
-  text-align: center;
-  border-radius: 4px;
+  width: 100%;
+  height: 140px;
+  background: #333;
 }
 
-footer span {
-  color: #ccc;
-  font-size: 11px;
+/* -------------
+
+JS-ADDED ELEMENTS
+
+-------------- */
+
+.flightItem {
+  margin: 0 0 20px 0;
+  padding: 5px 20px;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
 }
 
-#nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 100%;
-  background: #123;
-  transition: all 0.3s ease-in-out;
+.bold {
+  font-weight: 700;
 }
 
-.navClosed #nav {
-  transform: translate3d(-100%,0,0);
+.info {
+  color: #767676;
 }
 
-.navClosed #main {
-  transform: translate3d(0,0,0);
+.price {
+  font-size: 16px;
 }
 
-.navOpen #nav {
-  transform: translate3d(0,0,0);
-}
+/* -------------
 
-.navOpen #main {
-  transform: translate3d(320px,0,0);
-}
+RESPONSIVE FIXES - EXTRA SMALL DEVICES
 
-/* --------------- Responsive Fixes --------------- */
-/* small device */
+-------------- */
 
-@media (min-width: 350px) {
-  .nav-tabs>li.destination {
-    width: 23.2%;
+@media only screen and (max-width : 767px) {
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
   }
-  .nav-tabs>li.from {
-    width: 23.2%;
-  }
-  .nav-tabs>li.dates {
-    width: 30.4%;
-  }
-  .nav-tabs>li.budget {
-    width: 23.2%;
-  }
-}
 
-@media (max-width: 767px) {
   .device-big {
     display: none;
   }
   .device-small {
     display: block;
   }
-}
-/* big device */
-@media only screen and (min-width : 768px) {
-  .device-big .tab-content {
-    overflow: hidden;
+
+  #destination {
+    background: #E98B78;
   }
 
-  .device-big, .tab-content > .tab-pane {
+  #from {
+    background: #6AA28B;
+  }
+
+  #dates {
+    background: #937E8F;
+  }
+
+  #budget {
+    background: #BDB491;
+  }
+
+  #container {
+    position: absolute;
+    top: 98px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  #map-area {
+    height: 100%;
+  }
+
+  #map {
+    height: 100%;
+  }
+
+  #info-layer {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #info-content {
+    position: relative;
+    top: 88%;
+  }
+
+}
+
+/* -------------
+
+RESPONSIVE FIXES - LARGE DEVICES AND DESKTOP
+
+-------------- */
+
+@media only screen and (min-width : 768px) {
+
+  .tab-content {
+    overflow: hidden;
+    width: auto;
+    padding: 40px;
+  }
+
+  .tab-content > .tab-pane {
     display: block;
     width: 25%;
     float: left;
@@ -336,56 +332,32 @@ footer span {
   .tab-content > .tab-pane {
     display: block;
   }
-}
-/* --------------- / Responsive Fixes --------------- */
 
-/* ELEMENTS */
+  #container {
 
-.none {
-  display: none;
-}
-
-.visible-inline {
-  display: inline-block;
-}
-
-.spinner {
-  text-align: center;
-  padding-left: 10px;
-}
-
-.spinner > div {
-  width: 8px;
-  height: 8px;
-  background-color: #fff;
-
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-}
-
-.spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-
-.spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-
-@-webkit-keyframes sk-bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0) }
-  40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes sk-bouncedelay {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 40% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
   }
+
+  #map-area {
+    height: 700px;
+    overflow: auto;
+  }
+
+  #map {
+    float: left;
+    width: 70%;
+    height: 100%;
+  }
+
+  #info-layer {
+    float: left;
+    width: 30%;
+    height: 100%;
+    overflow: scroll;
+  }
+
+  #info-content {
+    height: 100%;
+    padding: 20px;
+  }
+
 }

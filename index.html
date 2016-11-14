@@ -17,6 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.3.2/css/bootstrap-slider.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCTK4ZA4qWJcWdWHCRFEMrvuxpp-JzRYhI"></script>
@@ -28,130 +29,115 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="navClosed">
+  <body>
 
-    <div id="wrapper">
+    <header>
 
-      <div id="main">
+      <div id="topBar"></div>
 
-        <div id="map"></div>
+        <div id="tabs">
 
-        <div id="flight-results" class="resultsHidden">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs device-small" role="tablist">
+          <li role="presentation" class="destination active">
+            <a href="#destination" aria-controls="home" role="tab" data-toggle="tab"><span id="destinationTab">NRT</span><br /><span class="tab-font-small">Destination</span></a>
+          </li>
+          <li role="presentation" class="from">
+            <a href="#from" aria-controls="profile" role="tab" data-toggle="tab"><span id="fromTab">HKG</span><br /><span class="tab-font-small">From</span></a>
+          </li>
+          <li role="presentation" class="dates">
+            <a href="#dates" aria-controls="messages" role="tab" data-toggle="tab"><span id="datesTab">10-17.11</span><br /><span class="tab-font-small datesTab">Dates</span></a>
+          </li>
+          <li role="presentation" class="budget">
+            <a href="#budget" aria-controls="settings" role="tab" data-toggle="tab">$<span id="budgetvalue">1000</span><br /><span class="tab-font-small">Budget</span></a>
+          </li>
+        </ul>
 
-          <div id="outbound"></div>
+        <div class="tab-content">
 
-          <div id="return"></div>
+          <!-- Destination -->
+          <div role="tabpanel" class="tab-pane active" id="destination">
+            <div class="input-group">
+              <input type="text" id="typeahead-destination" class="form-control" data-provide="typeahead" placeholder="Search for destination...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Next</button>
+              </span>
+            </div><!-- /input-group -->
+            <div class="tab-link-container">
+              <a href="#">Not sure? Explore our favourites</a>
+            </div>
+          </div><!-- /destination -->
 
-        </div>
+          <!-- From -->
+          <div role="tabpanel" class="tab-pane" id="from">
+            <div class="input-group">
+              <input type="text" id="typeahead-from" class="form-control" data-provide="typeahead" placeholder="Search for departure airport...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div><!-- /input-group -->
+            <div class="tab-link-container">
+              <a href="#" onClick="getLocation()">Get your current location
+                <div id="spinner" class="spinner none">
+                  <div class="bounce1"></div>
+                  <div class="bounce2"></div>
+                  <div class="bounce3"></div>
+                </div>
+              </a>
+            </div>
+          </div><!-- /from -->
 
-        <div id="book" class="bookHidden">
+          <!-- Dates -->
+          <div role="tabpanel" class="tab-pane" id="dates">
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="form-control dateStart" name="start" placeholder="From" />
+                <span class="input-group-addon">to</span>
+                <input type="text" class="form-control dateEnd" name="end" placeholder="To" />
+            </div>
+            <div class="tab-link-container" id="dateRadioButtons">
+              <label class="radio-inline"><input value="return" checked="checked" type="radio" name="optradio">Return</label>
+              <label class="radio-inline"><input value="oneway" type="radio" name="optradio">One-way</label>
+            </div>
+          </div><!-- /dates -->
 
-          <h1><span id="booking-from">From</span> to <span id="booking-destination">Destination</span></h1>
+          <!-- Budget -->
+          <div role="tabpanel" class="tab-pane" id="budget">
+            <div class="slider-header">
+              <span class="low-value">$0</span>
+              <span class="high-value">$2000</span>
+            </div>
+            <div class="slider-container">
+              <input id="budget-slider" data-slider-id='budget-slider-id' data-slider-tooltip="hide" type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="10" data-slider-value="1000"/>
+            </div>
+          </div><!-- /budget -->
 
-          <h1><span id="booking-dateStart">DateEnd</span> to <span id="booking-dateEnd">DateStart</span></h1>
+        </div><!-- /Tab content -->
 
-        </div>
+      </div><!-- /Tabs -->
 
-      </div><!-- /Main -->
+    </header>
 
-      <div id="toolbar">
+    <div id="main">
 
-        <div id="topBar">
+      <div id="container">
 
-          <p>Logo</p>
+        <div id="map-area">
 
-        </div>
+          <div id="map"></div>
 
-        <div id="tab-container">
+          <div id="info-layer">
 
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs device-small" role="tablist">
-            <li role="presentation" class="destination active">
-              <a href="#destination" aria-controls="home" role="tab" data-toggle="tab"><span id="destinationTab">NRT</span><br /><span class="tab-font-small">Destination</span></a>
-            </li>
-            <li role="presentation" class="from">
-              <a href="#from" aria-controls="profile" role="tab" data-toggle="tab"><span id="fromTab">HKG</span><br /><span class="tab-font-small">From</span></a>
-            </li>
-            <li role="presentation" class="dates">
-              <a href="#dates" aria-controls="messages" role="tab" data-toggle="tab"><span id="datesTab">10-17.11</span><br /><span class="tab-font-small datesTab">Dates</span></a>
-            </li>
-            <li role="presentation" class="budget">
-              <a href="#budget" aria-controls="settings" role="tab" data-toggle="tab">$<span id="budgetvalue">1000</span><br /><span class="tab-font-small">Budget</span></a>
-            </li>
-          </ul>
+            <div id="info-content"></div>
 
-          <!-- Tab panes -->
-          <div class="tab-content">
-
-            <!-- Destination -->
-            <div role="tabpanel" class="tab-pane active" id="destination">
-              <div class="input-group">
-                <input type="text" id="typeahead-destination" class="form-control" data-provide="typeahead" placeholder="Search for destination...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Next</button>
-                </span>
-              </div><!-- /input-group -->
-              <div class="tab-link-container">
-                <a href="#">Not sure? Explore our favourites</a>
-              </div>
-            </div><!-- /destination -->
-
-            <!-- From -->
-            <div role="tabpanel" class="tab-pane" id="from">
-              <div class="input-group">
-                <input type="text" id="typeahead-from" class="form-control" data-provide="typeahead" placeholder="Search for departure airport...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
-                </span>
-              </div><!-- /input-group -->
-              <div class="tab-link-container">
-                <a href="#" onClick="getLocation()">Get your current location
-                  <div id="spinner" class="spinner none">
-                    <div class="bounce1"></div>
-                    <div class="bounce2"></div>
-                    <div class="bounce3"></div>
-                  </div>
-                </a>
-              </div>
-            </div><!-- /from -->
-
-            <!-- Dates -->
-            <div role="tabpanel" class="tab-pane" id="dates">
-              <div class="input-daterange input-group" id="datepicker">
-                  <input type="text" class="form-control dateStart" name="start" placeholder="From" />
-                  <span class="input-group-addon">to</span>
-                  <input type="text" class="form-control dateEnd" name="end" placeholder="To" />
-              </div>
-              <div class="tab-link-container" id="dateRadioButtons">
-                <label class="radio-inline"><input value="return" checked="checked" type="radio" name="optradio">Return</label>
-                <label class="radio-inline"><input value="oneway" type="radio" name="optradio">One-way</label>
-                <a href="#">Not sure about dates</a>
-              </div>
-            </div><!-- /dates -->
-
-            <!-- Budget -->
-            <div role="tabpanel" class="tab-pane" id="budget">
-              <div class="slider-header">
-                <span class="low-value">$0</span>
-                <span class="high-value">$2000</span>
-              </div>
-              <div class="slider-container">
-                <input id="budget-slider" data-slider-id='budget-slider-id' data-slider-tooltip="hide" type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="10" data-slider-value="1000"/>
-              </div>
-            </div><!-- /budget -->
           </div>
 
         </div>
 
-      </div><!-- /Toolbar -->
-
-      <div id="bookButton" class="buttonInactive resultsHidden">
-
-        <p>Choose flights</p>
+        <footer></footer>
 
       </div>
 
-    </div><!-- /Wrapper -->
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
