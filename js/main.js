@@ -14,6 +14,11 @@ var dates = {
 }
 var oneWay = false;
 var budgetMax;
+var outBoundSelected = false;
+var returnSelected = false;
+var resultsFound = false;
+
+var outBoundDepart, outBoundArrive, outBoundPrice, returnDepart, returnArrive, returnPrice;
 
 $(function(){
 
@@ -21,28 +26,159 @@ $(function(){
 
   var $inputDestination = $('#typeahead-destination');
   $inputDestination.typeahead({
-    source: [{id: "HKG", name: "Hong Kong HKG"}, {id: "NRT", name: "Tokyo NRT"}, {id: "HND", name: "Tokyo HND"}]
+    source: [{id: "HKG", name: "Hong Kong"}, {id: "KIX", name: "Osaka"}, {id: "HND", name: "Tokyo"}, {id: "PVG", name: "Shanghai"}, {id: "SIN", name: "Singapore"}]
   });
 
   $inputDestination.change(function() {
     var current = $inputDestination.typeahead("getActive");
-    destinationCity = current.id;
-    $("#booking-destination").html(destinationCity);
-    $("#destinationTab").html(destinationCity);
-    showResults();
+    destinationCity = current;
+    $("#booking-destination").html(destinationCity.id);
+    $("#destinationTab").html(destinationCity.id);
+    buildTrip();
   });
 
   var $inputFrom = $('#typeahead-from');
   $inputFrom.typeahead({
-    source: [{id: "HKG", name: "Hong Kong HKG"}, {id: "NRT", name: "Tokyo NRT"}, {id: "HND", name: "Tokyo HND"}]
+    source: [{id: "HKG", name: "Hong Kong"}, {id: "KIX", name: "Osaka"}, {id: "HND", name: "Tokyo"}, {id: "PVG", name: "Shanghai"}, {id: "SIN", name: "Singapore"}]
   });
 
   $inputFrom.change(function() {
     var current = $inputFrom.typeahead("getActive");
-    fromCity = current.id;
-    $("#booking-from").html(fromCity);
-    $("#fromTab").html(fromCity);
-    showResults();
+    fromCity = current;
+    $("#booking-from").html(fromCity.id);
+    $("#fromTab").html(fromCity.id);
+    buildTrip();
+  });
+
+  function buildTrip() {
+    if (destinationCity != null) {
+      console.log("Destination: " + destinationCity.id);
+    }
+    if (fromCity != null) {
+      console.log("From: " + fromCity.id);
+    }
+    if (destinationCity != null && fromCity != null) {
+      updateResults();
+    }
+  }
+
+  function updateResults() {
+    resultsFound = false;
+    $("#outbound").html("");
+    $("#return").html("");
+    if ((destinationCity.id != null && fromCity.id != null) && (destinationCity.id != fromCity.id)) {
+      for (var i = 0; i < flights["from"].length; i++) {
+        var from = Object.keys(flights["from"][i])[0];
+        // Outbound
+        if (fromCity.id == from) {
+          var resultsOutboundHeader = $("<h1></h1>").text("Outbound flight: " + fromCity.name + " to " + destinationCity.name);
+          $("#outbound").append(resultsOutboundHeader);
+          for (var j = 0; j < flights["from"][i][fromCity.id].length; j++) {
+            if (destinationCity.id == flights["from"][i][fromCity.id][j].id) {
+              var flight = flights["from"][i][fromCity.id][j];
+              var container = $("<div class='flight-result'></div>").attr({
+                "data-from" : fromCity.id,
+                "data-destination" : destinationCity.id,
+                "data-index" : j
+              });
+              var title = $("<h2></h2>").text(fromCity.id + " - " + flight.id);
+              var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
+              var price = $("<p></p>").text("$" + flight.price)
+              $("#outbound").append(container);
+              container.append(title,time,price);
+              resultsFound = true;
+            } else {
+              console.log("No flights from this location.")
+            }
+          }
+        }
+        // Return
+        if (destinationCity.id == from && !oneWay) {
+          var resultsOutboundHeader = $("<h1></h1>").text("Return flight: " + destinationCity.name + " to " + fromCity.name);
+          $("#return").append(resultsOutboundHeader);
+          for (var j = 0; j < flights["from"][i][destinationCity.id].length; j++) {
+            if (fromCity.id == flights["from"][i][destinationCity.id][j].id) {
+              var flight = flights["from"][i][destinationCity.id][j];
+              var container = $("<div class='flight-result'></div>").attr({
+                "data-from" : fromCity.id,
+                "data-destination" : destinationCity.id,
+                "data-index" : j
+              });
+              var title = $("<h2></h2>").text(destinationCity.id + " - " + flight.id);
+              var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
+              var price = $("<p></p>").text("$" + flight.price)
+              $("#return").append(container);
+              container.append(title,time,price);
+              resultsFound = true;
+            } else {
+              console.log("No flights from this location.")
+            }
+          }
+        }
+        // End return
+      }
+    }
+
+    if (resultsFound) {
+      $("#flight-results").removeClass("resultsHidden");
+      $("#bookButton").removeClass("resultsHidden");
+    } else {
+      $("#flight-results").addClass("resultsHidden");
+      $("#bookButton").addClass("resultsHidden");
+    }
+
+  }
+
+  // Select flights
+
+  $("#outbound").on("click", "div.flight-result", function(){
+    $("#outbound .flight-result").removeClass("selected");
+    $(this).addClass("selected");
+    outBoundSelected = true;
+    outBoundDepart = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].depart;
+    outBoundArrive = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].arrive;
+    outBoundPrice = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].price;
+    console.log(outBoundDepart, outBoundArrive, outBoundPrice);
+    updateButton();
+  });
+
+  // console.log(flights["from"][0][$(".selected").attr("data-from")][0]);
+  console.log($(".selected").attr("data-from"));
+
+  $("#return").on("click", "div.flight-result", function(){
+    $("#return .flight-result").removeClass("selected");
+    $(this).addClass("selected");
+    returnSelected = true;
+    returnDepart = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].depart;
+    returnArrive = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].arrive;
+    returnPrice = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].price;
+    console.log(outBoundDepart, outBoundArrive, outBoundPrice);
+    updateButton();
+  });
+
+  function updateButton() {
+    console.log("update button");
+    if (outBoundSelected && !returnSelected && !oneWay) {
+      $("#bookButton p").text("Choose return flight");
+      $("#bookButton").removeClass("buttonActive");
+    } else if (!outBoundSelected && returnSelected && !oneWay) {
+      $("#bookButton p").text("Choose outbound flight");
+      $("#bookButton").removeClass("buttonActive");
+    } else if (outBoundSelected && oneWay) {
+      $("#bookButton p").text("Book flight");
+      $("#bookButton").addClass("buttonActive");
+    } else if (outBoundSelected && returnSelected && !oneWay) {
+      $("#bookButton p").text("Book flights");
+      $("#bookButton").addClass("buttonActive");
+    }
+  }
+
+  $("#bookButton").on("click", function(){
+    if ((outBoundSelected && returnSelected && !oneWay) || (outBoundSelected && oneWay)) {
+      $("#book").removeClass("bookHidden");
+      $(this).addClass("resultsHidden");
+      $("#flight-results").addClass("resultsHidden");
+    }
   });
 
   // dates
@@ -93,16 +229,6 @@ $(function(){
   var value = $('#budget-slider').slider().on('slide',changeValue).data('slider');
 
 });
-
-function showResults() {
-  console.log(destinationCity);
-  console.log(fromCity);
-  if ((destinationCity != "" && fromCity != "") && (destinationCity != fromCity)) {
-    $("#flight-results p").html("showing results");
-  } else {
-    $("#flight-results p").html("No results to show");
-  }
-}
 
 function dateTab() {
   if (oneWay) {

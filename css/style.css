@@ -22,24 +22,26 @@ div {
 }
 
 #main {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: #FAFAFA;
-  transition: transform 0.3s ease-in-out;
+  padding: ;
 }
 
 #map {
-  position: absolute;
-  top: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 90%;
 
   display: block;
   text-indent: -9999px;
   background: #ECECEC url(../img/map2.svg);
   background-position: center center;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  background: red;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #toolbar {
@@ -184,13 +186,54 @@ div {
 
 /* Display results */
 
+#bookButton {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 56px;
+  width: 100%;
+  text-align: center;
+}
+
+.resultsHidden {
+  display: none;
+}
+
+.buttonInactive {
+  background: #ccc;
+}
+
+.buttonActive {
+  background: red;
+}
+
+#bookButton p {
+  line-height: 56px;
+  color: #fff;
+  font-size: 16px;
+}
+
 #flight-results {
   width: 100%;
   position: absolute;
   top: 180px;
   left: 0;
-  height: 100px;
   background: #ddd;
+  padding-bottom: 56px;
+}
+
+.flight-result {
+  background: #fff;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+}
+
+.selected {
+  background: green;
+}
+
+.flight-result h1 {
+  font-size: 20px;
 }
 
 /* BOOKING */
@@ -202,6 +245,10 @@ div {
   left: 0;
   background: #ccc;
   text-align: center;
+}
+
+.bookHidden {
+  display: none;
 }
 
 footer {
@@ -251,16 +298,16 @@ footer span {
 
 @media (min-width: 350px) {
   .nav-tabs>li.destination {
-    width: 22%;
+    width: 23.2%;
   }
   .nav-tabs>li.from {
-    width: 22%;
+    width: 23.2%;
   }
   .nav-tabs>li.dates {
-    width: 34%;
+    width: 30.4%;
   }
   .nav-tabs>li.budget {
-    width: 22%;
+    width: 23.2%;
   }
 }
 
