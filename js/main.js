@@ -129,6 +129,17 @@ $(function(){
           }
         }
         // End return
+        if (resultsFound) {
+          if (fromCity.id == "HKG" && destinationCity.id == "SIN") {
+            $("#map").attr({
+              "class" : "hkgsin"
+            });
+          } else if (fromCity.id == "HKG" && destinationCity.id == "NRT") {
+            $("#map").attr({
+              "class" : "hkgnrt"
+            });
+          }
+        }
       }
     }
 
@@ -191,6 +202,17 @@ $(function(){
   $("#bookButton").on("click", function(){
     $("body").removeClass("search");
     $("body").addClass("book");
+    $("body").addClass("booking1");
+  });
+
+  $("#detailsButton").on("click", function(){
+    $("body").removeClass("booking1");
+    $("body").addClass("booking2");
+  });
+
+  $("#paymentButton").on("click", function(){
+    $("body").removeClass("booking2");
+    $("body").addClass("booking3");
   });
 
   // dates
@@ -238,11 +260,41 @@ $(function(){
     var budget = value.getValue();
     if (budget == 2000) {
       budget = "2000+";
+    } else if (budget < 1000) {
+      $("#map").addClass("under1000");
+    } else if (budget >= 1000) {
+      $("#map").removeClass("under1000");
     }
     $(".budgetvalue").text(budget);
   };
 
   var value = $('#budget-slider').slider().on('slide',changeValue).data('slider');
+
+  // Update map
+
+  $("#info-layer a.beaches").on("click", function(){
+    $("#map").attr({
+      "class" : "beaches"
+    });
+  });
+
+  $("#info-layer a.cities").on("click", function(){
+    $("#map").attr({
+      "class" : "cities"
+    });
+  });
+
+  $("#info-layer a.outdoors").on("click", function(){
+    $("#map").attr({
+      "class" : "outdoors"
+    });
+  });
+
+  $("#info-layer a.adventure").on("click", function(){
+    $("#map").attr({
+      "class" : "adventure"
+    });
+  });
 
 });
 

@@ -54,6 +54,71 @@ header {
 
 /* -------------
 
+VISIBLE AND HIDDEN STATES
+
+-------------- */
+
+.search #map-area {
+  display: block;
+}
+
+.book #map-area {
+  display: none;
+}
+
+.search #tabContent {
+  display: block;
+}
+
+.book #tabContent {
+  display: none;
+}
+
+.search #bookingHeader {
+  display: none;
+}
+
+.book #bookingHeader {
+  display: block;
+}
+
+.search #bookingContent {
+  display: none;
+}
+
+.book #bookingContent {
+  display: block;
+}
+
+.booking1 #booking1 {
+  display: block;
+}
+
+.booking1 #booking2,
+.booking1 #booking3 {
+  display: none;
+}
+
+.booking2 #booking2 {
+  display: block;
+}
+
+.booking2 #booking1,
+.booking2 #booking3 {
+  display: none;
+}
+
+.booking3 #booking3 {
+  display: block;
+}
+
+.booking3 #booking1,
+.booking3 #booking2 {
+  display: none;
+}
+
+/* -------------
+
 TABS
 
 -------------- */
@@ -230,6 +295,16 @@ TABS
   background: rgba(0,0,0,.3);
 }
 
+#bookingHeader {
+  background: #ccc;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#bookingHeader .inner {
+  padding: 40px 0;
+}
+
 /* -------------
 
 MAIN CONTENT
@@ -242,14 +317,6 @@ MAIN CONTENT
 
 #container {
 
-}
-
-.search #map-area {
-  display: block;
-}
-
-.book #map-area {
-  display: none;
 }
 
 #map-area {
@@ -266,8 +333,39 @@ MAIN CONTENT
   background-image: url(../img/map-explore.png);
 }
 
+#map.beaches {
+  background-image: url(../img/map-beaches.png);
+  background: red;
+}
+
+#map.cities {
+  background-image: url(../img/map-cities.png);
+  background: green;
+}
+
+#map.outdoors {
+  background-image: url(../img/map-outdoors.png);
+  background: yellow;
+}
+
+#map.adventure {
+  background-image: url(../img/map-adventure.png);
+  background: brown;
+}
+
 #map.hkgsin {
-  background-image: url(../img/map.png);
+  background-image: url(../img/map-hkgsin.png);
+  background: purple;
+}
+
+#map.hkgnrt {
+  background-image: url(../img/map-hkgnrt.png);
+  background: grey;
+}
+
+#map.under1000 {
+  background-image: url(../img/map-under1000.png);
+  background: pink;
 }
 
 #info-layer {
@@ -310,18 +408,26 @@ MAIN CONTENT
   background: #CB4F43;
 }
 
-.search #bookingContent {
-  display: none;
+#bookingContent {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
-.book #bookingContent {
+#bookingContent .inner {
+  padding: 0;
+}
+
+#bookingContent form {
+  max-width: 460px;
+}
+
+.booking1 #booking1 {
   display: block;
 }
 
-#bookingContent {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+.booking1 #booking2 {
+  display: none;
 }
 
 footer {

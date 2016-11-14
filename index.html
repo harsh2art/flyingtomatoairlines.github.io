@@ -51,7 +51,7 @@
           </li>
         </ul>
 
-        <div class="tab-content">
+        <div id="tabContent" class="tab-content">
 
           <!-- From -->
           <div role="tabpanel" class="tab-pane active" id="from">
@@ -96,6 +96,20 @@
 
         </div><!-- /Tab content -->
 
+        <div id="bookingHeader">
+
+          <div class="inner">
+
+            <h1>Hong Kong <i class="fa fa-long-arrow-right" aria-hidden="true"></i> Singapore</h1>
+
+            <p class="date">Outbound: 14.11.2016, Return: 21.11.2016</p>
+
+            <p class="price">Total price (Including taxes and surcharges): $512</p>
+
+          </div>
+
+        </div>
+
       </div><!-- /Tabs -->
 
     </header>
@@ -126,13 +140,13 @@
 
               </a>
 
-              <a href="#" class="flightItem explore cities">
+              <a href="#" class="flightItem explore outdoors">
 
                 <h2>Breathtaking outdoors</h2>
 
               </a>
 
-              <a href="#" class="flightItem explore cities">
+              <a href="#" class="flightItem explore adventure">
 
                 <h2>Adventure</h2>
 
@@ -158,7 +172,125 @@
 
         <div id="bookingContent">
 
-          <h1>Booking</h1>
+          <div id="bookingProgress">
+
+            <p>Passenger details <i class="fa fa-long-arrow-right" aria-hidden="true"></i> Payment Information<i class="fa fa-long-arrow-right" aria-hidden="true"></i> Booking Confirmation</p>
+
+          </div>
+
+          <div id="booking1" class="container inner">
+
+            <h1>Passenger details</h1>
+
+            <p>Already a member? <a href="#">Log in</a></p>
+
+            <div>
+              <div class="col-md-12">
+                <form id="details-form">
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group required">
+                      <label class="control-label">First Name</label>
+                      <input class="form-control" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Last Name</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Email</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Phone Number</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 form-group">
+                      <button id="detailsButton" class="form-control btn btn-primary submit-button" type="button">Proceed to payment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="booking2" class="container inner">
+
+            <h1>Payment</h1>
+
+            <div>
+              <div class="col-md-12">
+                <form id="payment-form">
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group required">
+                      <label class="control-label">Name on Card</label>
+                      <input class="form-control" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Card Number</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-4 form-group cvc required">
+                      <label class="control-label">CVC</label>
+                      <input autocomplete="off" class="form-control card-cvc" placeholder="ex. 311" size="4" type="text">
+                    </div>
+                    <div class="col-xs-4 form-group expiration required">
+                      <label class="control-label">Expiration</label>
+                      <input class="form-control card-expiry-month" placeholder="MM" size="2" type="text">
+                    </div>
+                    <div class="col-xs-4 form-group expiration required">
+                      <label class="control-label"> </label>
+                      <input class="form-control card-expiry-year" placeholder="YYYY" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 form-group">
+                      <button id="paymentButton" class="form-control btn btn-primary submit-button" type="button">Book flights</button>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 error form-group hide">
+                      <div class="alert-danger alert">
+                        Please correct the errors and try again.
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="booking3" class="inner">
+
+            <h1>Booking Complete!</h1>
+
+            <p>Pack your bags, you're going to Singapore!</p>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Good to know</h3>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+            </div>
+
+            <a href="index.html">Back to start</a>
+
+          </div>
 
         </div>
 
