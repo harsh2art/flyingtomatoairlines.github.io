@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,13 +11,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Flying Tomato Airlines</title>
 
-    <!-- Mapbbox -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.25.1/mapbox-gl.css' rel='stylesheet' />
-
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.3.2/css/bootstrap-slider.css" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -28,82 +27,344 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="search">
 
-    <div id="wrapper">
+    <header>
 
-        <div class="overlay"></div>
-    
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                       Flying Tomato
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Manage</a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header"> Company </li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Blog</a></li>
-                  </ul>
-                </li>
-                <li>
-                    <a href="#">Customer Support</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /#sidebar-wrapper -->
+      <div id="topBar">
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-                <span class="hamb-middle"></span>
-                <span class="hamb-bottom"></span>
-            </button>
+        <div id="logo"><a href="index.html"><img src="img/logo.png" alt="logo"></a></div>
 
-            <div class="container-fluid">
-              <div class="row">
-                  <div class="col-lg-8 col-lg-offset-4">
-                      <h1>Temp Grid Heading</h1>
-                  </div>
-              </div>
-              <div id="map" class="col-lg-12"></div>
-              <footer>
-                <p>This is not a real website. This was designed as part of a school project on web design and usability.</p>
-              </footer>
-            </div>
+        <div class="inner">
+
+          <ul>
+            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Help</a></li>
+            <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i> HKD</a></li>
+            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Manage Booking</a></li>
+          </ul>
+
         </div>
-        <!-- /#page-content-wrapper -->
-        
+
       </div>
 
-    
+        <div id="tabs">
 
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZWxhbmR0bWFuIiwiYSI6IlppRlZSUGMifQ.X0oouInkmaBJ4gRoUpXD3A';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/elandtman/ciu3xebg800bc2in57vwtoj63',
-        center: [114.10, 22.39],
-        zoom: 3.9
-    });
-    </script>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs device-small" role="tablist">
+          <li role="presentation" class="from active">
+            <a href="#from" aria-controls="profile" role="tab" data-toggle="tab"><span id="fromTab">HKG</span><br /><span class="tab-font-small">From</span></a>
+          </li>
+          <li role="presentation" class="destination">
+            <a href="#destination" aria-controls="home" role="tab" data-toggle="tab"><span id="destinationTab">NRT</span><br /><span class="tab-font-small">Destination</span></a>
+          </li>
+          <li role="presentation" class="dates">
+            <a href="#dates" aria-controls="messages" role="tab" data-toggle="tab"><span id="datesTab">10-17.11</span><br /><span class="tab-font-small datesTab">Dates</span></a>
+          </li>
+          <li role="presentation" class="budget">
+            <a href="#budget" aria-controls="settings" role="tab" data-toggle="tab">$<span class="budgetvalue" id="budgetvalue">1000</span><br /><span class="tab-font-small">Budget</span></a>
+          </li>
+        </ul>
+
+        <div id="tabContent" class="tab-content">
+
+          <!-- From -->
+          <div role="tabpanel" class="tab-pane active" id="from">
+            <label>From</label>
+            <div class="input-group">
+              <input type="text" id="typeahead-from" class="form-control from" data-provide="typeahead" value="Hong Kong (HKG)" placeholder="Hong Kong HKG">
+            </div><!-- /input-group -->
+          </div><!-- /from -->
+
+          <!-- Destination -->
+          <div role="tabpanel" class="tab-pane" id="destination">
+            <label>To</label>
+            <div class="input-group">
+              <input type="text" id="typeahead-destination" class="form-control destination" data-provide="typeahead" placeholder="Search for destination...">
+            </div><!-- /input-group -->
+          </div><!-- /destination -->
+
+          <!-- Dates -->
+          <div role="tabpanel" class="tab-pane" id="dates">
+            <label>
+              <div class="tab-link-container" id="dateRadioButtons">
+                <label class="radio-inline"><input value="return" checked="checked" type="radio" name="optradio">Return</label>
+                <label class="radio-inline"><input value="oneway" type="radio" name="optradio">One-way</label>
+              </div>
+            </label>
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="form-control dateStart" name="start" placeholder="From" />
+                <span class="input-group-addon">to</span>
+                <input type="text" class="form-control dateEnd" name="end" placeholder="To" />
+            </div>
+          </div><!-- /dates -->
+
+          <!-- Budget -->
+          <div role="tabpanel" class="tab-pane" id="budget">
+            <div class="inner">
+              <label>$<span class="budgetvalue">2000+</span></label>
+              <div class="slider-container">
+                <input id="budget-slider" data-slider-id='budget-slider-id' data-slider-tooltip="hide" type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="10" data-slider-value="2000"/>
+              </div>
+            </div>
+          </div><!-- /budget -->
+
+        </div><!-- /Tab content -->
+
+        <div id="bookingHeader">
+
+          <div class="inner">
+
+            <h1>Hong Kong <i class="fa fa-long-arrow-right" aria-hidden="true"></i> Singapore</h1>
+
+            <p class="date">Outbound: 14.11.2016, Return: 21.11.2016</p>
+
+            <p class="price">Total price (Including taxes and surcharges): $512</p>
+
+          </div>
+
+        </div>
+
+      </div><!-- /Tabs -->
+
+    </header>
+
+    <div id="main">
+
+      <div id="container">
+
+        <div id="map-area">
+
+          <div id="map" class="explore"></div>
+
+          <div id="info-layer">
+
+            <div id="info-content">
+
+              <h1>Explore our best deals</h1>
+
+              <a href="#" class="flightItem explore beaches">
+
+                <h2>Relaxing beaches</h2>
+
+              </a>
+
+              <a href="#" class="flightItem explore cities">
+
+                <h2>City breaks</h2>
+
+              </a>
+
+              <a href="#" class="flightItem explore outdoors">
+
+                <h2>Breathtaking outdoors</h2>
+
+              </a>
+
+              <a href="#" class="flightItem explore adventure">
+
+                <h2>Adventure</h2>
+
+              </a>
+
+            </div>
+
+            <div id="infoButton" class="buttonHidden">
+
+              <div class="inner">
+
+                <p>Total: $<span class="bookingTotal"></span></p>
+
+                <button id="bookButton" class="inactiveButton">Choose flights</button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div id="bookingContent">
+
+          <div id="bookingProgress">
+
+            <p>
+              <span id="stageDetails" class="active">1.Passenger details</span>
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span id="stagePayment">2.Payment</span>
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span id="stageConfirm">3.Confirmation</span>
+            </p>
+
+          </div>
+
+          <div id="booking1" class="container inner">
+
+            <h1>Passenger details</h1>
+
+            <p>Already a member? <a href="#">Log in</a></p>
+
+            <div>
+              <div class="col-md-12">
+                <form id="details-form">
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group required">
+                      <label class="control-label">First Name</label>
+                      <input class="form-control" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Last Name</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Email</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Phone Number</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 form-group">
+                      <button id="detailsButton" class="form-control btn btn-primary submit-button" type="button">Proceed to payment</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="booking2" class="container inner">
+
+            <h1>Payment</h1>
+
+            <div>
+              <div class="col-md-12">
+                <form id="payment-form">
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group required">
+                      <label class="control-label">Name on Card</label>
+                      <input class="form-control" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-12 form-group card required">
+                      <label class="control-label">Card Number</label>
+                      <input autocomplete="off" class="form-control card-number" size="20" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-xs-4 form-group cvc required">
+                      <label class="control-label">CVC</label>
+                      <input autocomplete="off" class="form-control card-cvc" placeholder="ex. 311" size="4" type="text">
+                    </div>
+                    <div class="col-xs-4 form-group expiration required">
+                      <label class="control-label">Expiration</label>
+                      <input class="form-control card-expiry-month" placeholder="MM" size="2" type="text">
+                    </div>
+                    <div class="col-xs-4 form-group expiration required">
+                      <label class="control-label"> </label>
+                      <input class="form-control card-expiry-year" placeholder="YYYY" size="4" type="text">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 form-group">
+                      <button id="paymentButton" class="form-control btn btn-primary submit-button" type="button">Book flights</button>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 error form-group hide">
+                      <div class="alert-danger alert">
+                        Please correct the errors and try again.
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="booking3" class="inner">
+
+            <h1>Booking Complete!</h1>
+
+            <p>Pack your bags, you're going to Singapore!</p>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Good to know</h3>
+              </div>
+              <div class="panel-body">
+                Panel content
+              </div>
+            </div>
+
+            <a class="btn btn-primary btn-lg" href="index.html" role="button">Back to start</a>
+
+          </div>
+
+        </div>
+
+        <footer>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="col-md-4">
+                  <p>This is not a real website. This was designed as part of a school project on web design and usability.</p>
+                </div>
+                <div class="col-md-4">
+                  <ul class="list-unstyled">
+                    <li><a href="#">Manage Booking</a></li>
+                    <li><a href="#">Check In</a></li>
+                    <li><a href="#">Flight Updates</a></li>
+                    <li><a href="#">Frequent Flyer Programme</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-4 social">
+                  <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row copy">
+              <div class="col-lg-12">
+                <div class="col-md-8">
+                  <a href="#">Terms of Service</a>
+                  <a href="#">Privacy</a>
+                  <a href="#">Security</a>
+                </div>
+                <div class="col-md-4">
+                  <p class="muted pull-right">© 2016 Flying Tomato Airlines. All rights reserved</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </footer>
+
+      </div>
+
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.3.2/bootstrap-slider.min.js"></script>
+    <script src="js/flights.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
