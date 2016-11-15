@@ -22,6 +22,23 @@ var outBoundDepart, outBoundArrive, outBoundPrice, returnDepart, returnArrive, r
 
 $(function(){
 
+
+  // Close tab when clicked
+
+  var active = $('a[data-toggle="tab"]').parents('.active').length;
+  var tabClicked = false;
+
+  // Closing active tab when clicking on toggle:
+  $('[data-toggle=tab]').click(function(){
+      if ($(this).parent().hasClass('active')){
+          $($(this).attr("href")).toggleClass('active');
+          active = null;
+      } else {
+          tabClicked = true;
+          active = this;
+      }
+  });
+
   // Destination and from
 
   var $inputDestination = $('#typeahead-destination');
