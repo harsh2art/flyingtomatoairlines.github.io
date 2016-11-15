@@ -322,6 +322,7 @@ $(function(){
     $("#map").attr({
       "class" : "explore beaches"
     });
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 
@@ -329,6 +330,7 @@ $(function(){
     $("#map").attr({
       "class" : "explore cities"
     });
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 
@@ -336,6 +338,7 @@ $(function(){
     $("#map").attr({
       "class" : "explore outdoors"
     });
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 
@@ -343,6 +346,7 @@ $(function(){
     $("#map").attr({
       "class" : "explore adventure"
     });
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 
@@ -350,6 +354,7 @@ $(function(){
     destinationCity = {id: "SIN", name: "Singapore (SIN)"};
     $inputDestination.attr({"value" : "Singapore (SIN)"});
     updateResults();
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 
