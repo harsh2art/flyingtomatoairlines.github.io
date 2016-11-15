@@ -2,14 +2,14 @@ var destinationCity;
 var fromCity = {id: "HKG", name: "Hong Kong HKG"};
 var dates = {
   startDate: {
-    day: "",
-    month: "",
-    year: ""
+    day: "17",
+    month: "11",
+    year: "2016"
   },
   endDate : {
-    day: "",
-    month: "",
-    year: ""
+    day: "24",
+    month: "11",
+    year: "2016"
   }
 }
 var oneWay = false;
@@ -90,10 +90,11 @@ $(function(){
               });
               var title = $("<h2></h2>").text(fromCity.id + " - " + flight.id);
               // var titleDepart = $("<span></span>").attr({"class":"bold"}).text(flight.depart);
+              var date = $("<p></p>").text(dates.startDate.month + "/" + dates.startDate.day + "/" + dates.startDate.year);
               var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
-              var price = $("<p></p>").text("$" + flight.price)
+              var price = $("<p></p>").text("$" + flight.price);
               outboundContainer.append(container);
-              container.append(title,time,price);
+              container.append(title,date,time,price);
               $("#info-content").append(outboundContainer);
               $("#infoButton").removeClass("buttonHidden");
             } else {
@@ -119,10 +120,11 @@ $(function(){
                 "data-index" : j
               });
               var title = $("<h2></h2>").text(destinationCity.id + " - " + flight.id);
+              var date = $("<p></p>").text(dates.endDate.month + "/" + dates.endDate.day + "/" + dates.endDate.year);
               var time = $("<p></p>").text(flight.depart + " to " + flight.arrive);
-              var price = $("<p></p>").text("$" + flight.price)
+              var price = $("<p></p>").text("$" + flight.price);
               returnContainer.append(container);
-              container.append(title,time,price);
+              container.append(title,date,time,price);
               $("#info-content").append(returnContainer);
               resultsFound = true;
             } else {
@@ -228,6 +230,10 @@ $(function(){
   var $datepicker = $("#dates .input-daterange");
   var $datepickerStart = $("#dates .input-daterange .dateStart");
   var $datepickerEnd = $("#dates .input-daterange .dateEnd");
+
+  $datepickerStart.attr({"value": dates.startDate.month + "/" + dates.startDate.day + "/" + dates.startDate.year});
+  $datepickerEnd.attr({"value": dates.endDate.month + "/" + dates.endDate.day + "/" + dates.endDate.year});
+
   $datepicker.datepicker({
     autoclose: true,
     todayHighlight: true
@@ -241,6 +247,7 @@ $(function(){
     dates.endDate.year = $datepickerStart.datepicker('getFormattedDate').split("/")[2];
     $("#booking-dateStart").html(dates.startDate.day);
     dateTab();
+    updateResults();
   });
   $datepickerEnd.on("changeDate", function() {
     dates.endDate.day = $datepickerEnd.datepicker('getFormattedDate').split("/")[1];
@@ -248,6 +255,7 @@ $(function(){
     dates.endDate.year = $datepickerEnd.datepicker('getFormattedDate').split("/")[2];
     $("#booking-dateEnd").html(dates.endDate.day);
     dateTab();
+    updateResults();
   });
 
   // Return vs Oneway
@@ -283,26 +291,32 @@ $(function(){
 
   $("#info-layer a.beaches").on("click", function(){
     $("#map").attr({
-      "class" : "beaches"
+      "class" : "explore beaches"
     });
   });
 
   $("#info-layer a.cities").on("click", function(){
     $("#map").attr({
-      "class" : "cities"
+      "class" : "explore cities"
     });
   });
 
   $("#info-layer a.outdoors").on("click", function(){
     $("#map").attr({
-      "class" : "outdoors"
+      "class" : "explore outdoors"
     });
   });
 
   $("#info-layer a.adventure").on("click", function(){
     $("#map").attr({
-      "class" : "adventure"
+      "class" : "explore adventure"
     });
+  });
+
+  $("#map.explore").on("click", function(){
+    destinationCity = {id: "SIN", name: "Singapore (SIN)"};
+    $inputDestination.attr({"value" : "Singapore (SIN)"});
+    updateResults();
   });
 
 });
