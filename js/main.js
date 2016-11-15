@@ -25,20 +25,6 @@ $(function(){
 
   // Close tab when clicked
 
-  // var active = $('a[data-toggle="tab"]').parents('.active').length;
-  // var tabClicked = false;
-  //
-  // // Closing active tab when clicking on toggle:
-  // $('[data-toggle=tab]').click(function(){
-  //     if ($(this).parent().hasClass('active')){
-  //         $($(this).attr("href")).toggleClass('active');
-  //         active = null;
-  //     } else {
-  //         tabClicked = true;
-  //         active = this;
-  //     }
-  // });
-
   $('#tabs a').click(function (e) {
       var tab = $(this);
       if(tab.parent('li').hasClass('active')){
@@ -49,6 +35,8 @@ $(function(){
       }
   });
 
+  // Close tab on scroll
+
   $('body').on({
       'touchmove': function(e) {
         if ($("body").scrollTop() > 50) {
@@ -58,14 +46,6 @@ $(function(){
         }
       }
   });
-
-  // $(window).scroll(function (event) {
-  //   if ($(window).scrollTop() > 50) {
-  //     $("body").addClass("scroll");
-  //   } else {
-  //     $("body").removeClass("scroll");
-  //   }
-  // });
 
   // Destination and from
 
@@ -256,6 +236,7 @@ $(function(){
       $("body").addClass("book");
       $("body").addClass("booking1");
     }
+    window.scrollTo(0, 0);
     event.preventDefault();
   });
 

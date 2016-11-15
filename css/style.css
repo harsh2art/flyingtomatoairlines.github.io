@@ -487,6 +487,10 @@ BOOKING
   display: none;
 }
 
+#booking3 p {
+  margin-bottom: 20px;
+}
+
 footer {
   width: 100%;
   padding: 60px 0 40px 0;
@@ -603,7 +607,7 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
 
 @media only screen and (max-width : 767px) {
 
-  header {
+  .search header {
     position: fixed;
     top: 0;
     left: 0;
@@ -623,6 +627,10 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
   }
 
   .scroll #tabContent {
+    display: none;
+  }
+
+  .book #tabs .nav {
     display: none;
   }
 
@@ -661,12 +669,20 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     display: none;
   }
 
-  #container {
+  .search #container {
     position: absolute;
     top: 98px;
     left: 0;
     right: 0;
     bottom: 0;
+  }
+
+  #bookingHeader .inner {
+    padding: 20px;
+  }
+
+  #bookingProgress {
+    padding: 15px 15px 0 15px;
   }
 
   #map-area {
