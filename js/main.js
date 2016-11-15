@@ -168,6 +168,7 @@ $(function(){
     outBoundPrice = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].price;
     console.log(outBoundDepart, outBoundArrive, outBoundPrice);
     updateButton();
+    event.preventDefault();
   });
 
   // console.log(flights["from"][0][$(".selected").attr("data-from")][0]);
@@ -182,6 +183,7 @@ $(function(){
     returnPrice = flights["from"][0][$(this).attr("data-from")][$(this).attr("data-index")].price;
     console.log(outBoundDepart, outBoundArrive, outBoundPrice);
     updateButton();
+    event.preventDefault();
   });
 
   function updateButton() {
@@ -209,6 +211,7 @@ $(function(){
       $("body").addClass("book");
       $("body").addClass("booking1");
     }
+    event.preventDefault();
   });
 
   $("#detailsButton").on("click", function(){
@@ -216,6 +219,7 @@ $(function(){
     $("body").addClass("booking2");
     $("#bookingProgress *").removeClass("active");
     $("#stagePayment").addClass("active");
+    event.preventDefault();
   });
 
   $("#paymentButton").on("click", function(){
@@ -223,6 +227,7 @@ $(function(){
     $("body").addClass("booking3");
     $("#bookingProgress *").removeClass("active");
     $("#stageConfirm").addClass("active");
+    event.preventDefault();
   });
 
   // dates
@@ -300,30 +305,35 @@ $(function(){
     $("#map").attr({
       "class" : "explore beaches"
     });
+    event.preventDefault();
   });
 
   $("#info-layer a.cities").on("click", function(){
     $("#map").attr({
       "class" : "explore cities"
     });
+    event.preventDefault();
   });
 
   $("#info-layer a.outdoors").on("click", function(){
     $("#map").attr({
       "class" : "explore outdoors"
     });
+    event.preventDefault();
   });
 
   $("#info-layer a.adventure").on("click", function(){
     $("#map").attr({
       "class" : "explore adventure"
     });
+    event.preventDefault();
   });
 
   $("#map.explore").on("click", function(){
     destinationCity = {id: "SIN", name: "Singapore (SIN)"};
     $inputDestination.attr({"value" : "Singapore (SIN)"});
     updateResults();
+    event.preventDefault();
   });
 
 });
