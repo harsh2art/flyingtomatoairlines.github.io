@@ -610,12 +610,16 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     z-index: 9998;
   }
 
+  #logo {
+    left: 10px;
+  }
+
   #topBar span {
     display: none;
   }
 
   #topBar ul li {
-    padding: 0 15px 0 10px;
+    padding: 0 5px 0 20px;
   }
 
   .device-big {
