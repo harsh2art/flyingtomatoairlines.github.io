@@ -227,6 +227,13 @@ $(function(){
 
   // dates
 
+  if (dates.startDate.month == dates.endDate.month) {
+    $("#datesTab").html(dates.startDate.day + "-" + dates.endDate.day + "." + dates.endDate.month);
+  } else {
+    $("#datesTab").html(dates.startDate.day + "." + dates.startDate.month + "-" + dates.endDate.day + "." + dates.endDate.month);
+  }
+
+
   var $datepicker = $("#dates .input-daterange");
   var $datepickerStart = $("#dates .input-daterange .dateStart");
   var $datepickerEnd = $("#dates .input-daterange .dateEnd");
