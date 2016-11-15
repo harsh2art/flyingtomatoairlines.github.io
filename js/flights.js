@@ -8,6 +8,30 @@ var flights = {
           "country": "Singapore",
           "depart": "11-00",
           "arrive": "16-00",
+          "price": "754"
+        },
+        {
+          "id": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "depart": "17-40",
+          "arrive": "16-00",
+          "price": "929"
+        },
+        {
+          "id": "SIN",
+          "city": "Singapore",
+          "country": "Singapore",
+          "depart": "18-10",
+          "arrive": "23-00",
+          "price": "1430"
+        },
+        {
+          "id": "NRT",
+          "city": "Singapore",
+          "country": "Singapore",
+          "depart": "11-00",
+          "arrive": "16-00",
           "price": "255"
         },
         {
