@@ -622,6 +622,10 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     padding: 0 5px 0 20px;
   }
 
+  .scroll #tabContent {
+    display: none;
+  }
+
   .device-big {
     display: none;
   }
