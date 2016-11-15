@@ -69,7 +69,7 @@
 
           <!-- From -->
           <div role="tabpanel" class="tab-pane active" id="from">
-            <label>From</label>
+            <label class="text">From</label>
             <div class="input-group">
               <input type="text" id="typeahead-from" class="form-control from" data-provide="typeahead" value="Hong Kong (HKG)" placeholder="Hong Kong HKG">
             </div><!-- /input-group -->
@@ -77,7 +77,7 @@
 
           <!-- Destination -->
           <div role="tabpanel" class="tab-pane" id="destination">
-            <label>To</label>
+            <label class="text">To</label>
             <div class="input-group">
               <input type="text" id="typeahead-destination" class="form-control destination" data-provide="typeahead" placeholder="Search for destination...">
             </div><!-- /input-group -->
@@ -87,8 +87,8 @@
           <div role="tabpanel" class="tab-pane" id="dates">
             <label>
               <div class="tab-link-container" id="dateRadioButtons">
-                <label class="radio-inline"><input value="return" checked="checked" type="radio" name="optradio">Return</label>
-                <label class="radio-inline"><input value="oneway" type="radio" name="optradio">One-way</label>
+                <label class="radio-inline oneway"><input value="return" checked="checked" type="radio" name="optradio">Return</label>
+                <label class="radio-inline oneway"><input value="oneway" type="radio" name="optradio">One-way</label>
               </div>
             </label>
             <div class="input-daterange input-group" id="datepicker">
@@ -101,7 +101,7 @@
           <!-- Budget -->
           <div role="tabpanel" class="tab-pane" id="budget">
             <div class="inner">
-              <label>$<span class="budgetvalue">2000+</span></label>
+              <label class="text">$<span class="budgetvalue">2000+</span></label>
               <div class="slider-container">
                 <input id="budget-slider" data-slider-id='budget-slider-id' data-slider-tooltip="hide" type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="10" data-slider-value="2000"/>
               </div>

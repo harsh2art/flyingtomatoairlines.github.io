@@ -653,7 +653,7 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     border-radius: 4px;
   }
 
-  .tab-pane label {
+  .tab-pane label.text {
     display: none;
   }
 
@@ -680,6 +680,7 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
   #info-content {
     position: relative;
     top: 88%;
+    padding: 20px 15px 15px 15px;
   }
 
 }
