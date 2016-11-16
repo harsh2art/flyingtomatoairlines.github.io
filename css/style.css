@@ -356,35 +356,35 @@ MAIN CONTENT
 }
 
 #map.home {
-  background-image: url(../img/map-explore.png);
+  background-image: url(../img/map-explore-min.png);
 }
 
 #map.beaches {
-  background-image: url(../img/map-beaches.png);
+  background-image: url(../img/map-beaches-min.png);
 }
 
 #map.cities {
-  background-image: url(../img/map-cities.png);
+  background-image: url(../img/map-cities-min.png);
 }
 
 #map.outdoors {
-  background-image: url(../img/map-outdoors.png);
+  background-image: url(../img/map-outdoors-min.png);
 }
 
 #map.adventure {
-  background-image: url(../img/map-adventure.png);
+  background-image: url(../img/map-adventure-min.png);
 }
 
 #map.hkgsin {
-  background-image: url(../img/map-hkgsin.png);
+  background-image: url(../img/map-hkgsin-min.png);
 }
 
 #map.hkgnrt {
-  background-image: url(../img/map-hkgnrt.png);
+  background-image: url(../img/map-hkgnrt-min.png);
 }
 
 #map.under1000 {
-  background-image: url(../img/map-under1000.png);
+  background-image: url(../img/map-under1000-min.png);
 }
 
 #info-layer {
