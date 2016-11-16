@@ -205,11 +205,11 @@ TABS
   }
 
 .nav-tabs>li.destination>a {
-  background: #516066;
+  background: #49565C;
 }
 
 .nav-tabs>li.from>a {
-  background: #49565C;
+  background: #516066;
 }
 
 .nav-tabs>li.dates>a {
@@ -223,11 +223,12 @@ TABS
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-  color: #333;
+  color: #fff;
+  background: #CB4F43;
   border: 0;
 }
 
-.nav-tabs>li.active.destination>a,
+/*.nav-tabs>li.active.destination>a,
 .nav-tabs>li.active.destination>a:focus,
 .nav-tabs>li.active.destination>a:hover {
   background: #E77E69;
@@ -249,7 +250,7 @@ TABS
 .nav-tabs>li.active.budget>a:focus,
 .nav-tabs>li.active.budget>a:hover {
   background: #C3BB9B;
-}
+}*/
 
 .tab-content {
   width: 100%;
@@ -641,7 +642,11 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     display: block;
   }
 
-  #destination {
+  #tabContent div.active {
+    background: #EB776A;
+  }
+
+  /*#destination {
     background: #E98B78;
   }
 
@@ -655,7 +660,7 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
 
   #budget {
     background: #BDB491;
-  }
+  }*/
 
   .tab-pane>.input-group>.form-control {
     border-top-left-radius: 4px;
@@ -671,7 +676,7 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
 
   .search #container {
     position: absolute;
-    top: 98px;
+    top: 109px;
     left: 0;
     right: 0;
     bottom: 0;

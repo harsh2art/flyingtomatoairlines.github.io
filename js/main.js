@@ -22,6 +22,14 @@ var outBoundDepart, outBoundArrive, outBoundPrice, returnDepart, returnArrive, r
 
 $(function(){
 
+  // Set map dimensions
+  var viewportHeight = $("body").innerHeight();
+  var viewportWidth = $("body").innerWidth();
+  if (viewportWidth < 768) {
+    $("#map").css({"height" : (viewportHeight-109)*0.8+"px"});
+  } else {
+    $("#map-area").css({"height" : (viewportHeight-214)*0.95+"px"});
+  }
 
   // Close tab when clicked
 
