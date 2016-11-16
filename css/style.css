@@ -224,33 +224,32 @@ TABS
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
   color: #fff;
-  background: #CB4F43;
   border: 0;
 }
 
-/*.nav-tabs>li.active.destination>a,
+.nav-tabs>li.active.destination>a,
 .nav-tabs>li.active.destination>a:focus,
 .nav-tabs>li.active.destination>a:hover {
-  background: #E77E69;
+  background: #CC8C44;
 }
 
 .nav-tabs>li.active.from>a,
 .nav-tabs>li.active.from>a:focus,
 .nav-tabs>li.active.from>a:hover {
-  background: #78AB96;
+  background: #CB4F43;
 }
 
 .nav-tabs>li.active.dates>a,
 .nav-tabs>li.active.dates>a:focus,
 .nav-tabs>li.active.dates>a:hover {
-  background: #9D8A99;
+  background: #32994A;
 }
 
 .nav-tabs>li.active.budget>a,
 .nav-tabs>li.active.budget>a:focus,
 .nav-tabs>li.active.budget>a:hover {
-  background: #C3BB9B;
-}*/
+  background: #1B516D;
+}
 
 .tab-content {
   width: 100%;
@@ -642,25 +641,25 @@ RESPONSIVE FIXES - EXTRA SMALL DEVICES
     display: block;
   }
 
-  #tabContent div.active {
+  /*#tabContent div.active {
     background: #EB776A;
-  }
+  }*/
 
-  /*#destination {
-    background: #E98B78;
+  #destination {
+    background: #EBB06C;
   }
 
   #from {
-    background: #6AA28B;
+    background: #E9776A;
   }
 
   #dates {
-    background: #937E8F;
+    background: #53B163;
   }
 
   #budget {
-    background: #BDB491;
-  }*/
+    background: #4A7997;
+  }
 
   .tab-pane>.input-group>.form-control {
     border-top-left-radius: 4px;
