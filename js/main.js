@@ -177,6 +177,9 @@ $(function(){
             });
           }
         }
+        $("#bookingHeader .destination").text(destinationCity.name);
+        $("#bookingHeader .date").text("Outbound: " + dates.startDate.day + "."
+        + dates.startDate.month + "." + dates.startDate.year + ", Return: " + dates.endDate.day + "." + dates.endDate.month + "." + dates.endDate.year);
       }
     }
 
